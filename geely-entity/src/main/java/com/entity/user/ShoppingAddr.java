@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class shippingAddr {
+public class ShoppingAddr {
 
     private Integer customerAddrId;
     private Integer zip;
