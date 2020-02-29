@@ -11,5 +11,12 @@
 
     <artifactId>geely-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.geely</groupId>
+            <artifactId>geely-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
