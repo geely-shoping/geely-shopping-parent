@@ -16,5 +16,5 @@ public class CustomerAccount {
     private String username;
     private String password;
     private String customerStats;
-    private Date modifedTime;
+    private Date modifiedTime;
 }

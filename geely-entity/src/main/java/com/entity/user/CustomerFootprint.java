@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerFootpring_ {
+public class CustomerFootprint {
 
     private Integer customerFootprintId;
     private Integer customerId;
-    private Integer footpringId;
+    private Integer footprintId;
 
 }

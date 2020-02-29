@@ -4,11 +4,8 @@ public class TestGit {
     public static void main(String[] args) {
         System.out.println("sssss哦哦哦");
         System.out.println("hhhhh1");
-<<<<<<<<< Temporary merge branch 1
         System.out.println("黄zhihuan");
         System.out.println("成亮");
-=========
         System.out.println("黄志欢");
->>>>>>>>> Temporary merge branch 2
     }
 }

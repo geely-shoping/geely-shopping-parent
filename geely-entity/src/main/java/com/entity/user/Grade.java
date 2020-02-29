@@ -9,10 +9,12 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MyFootprint {
+public class Grade {
 
-    private Integer footprintId;
-    private Integer collectProduct;
-    private Date browseTime;
+    private Integer customerGradeId;
+    private String gradeName;
+    private Integer maxPoint;
+    private Integer minPoint;
+    private Date modifiedTime;
 
 }

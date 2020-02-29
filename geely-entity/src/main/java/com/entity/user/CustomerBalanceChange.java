@@ -8,7 +8,7 @@ import org.omg.Dynamic.Parameter;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerBalanceChange_ {
+public class CustomerBalanceChange {
 
     private Integer customerBalanceChangeId;
     private Integer customerId;

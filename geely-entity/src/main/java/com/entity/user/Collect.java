@@ -12,6 +12,6 @@ import java.util.Date;
 public class Collect {
 
     private Integer collectId;
-    private Integer coolletProduct;
+    private Integer collectProduct;
     private Date modifiedTime;
 }

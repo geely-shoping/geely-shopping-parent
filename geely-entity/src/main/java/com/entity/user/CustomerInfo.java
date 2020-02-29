@@ -13,7 +13,7 @@ import java.util.Date;
 public class CustomerInfo {
 
     private Integer customerInfId;
-    private String customrtName;
+    private String customerName;
     private String customerGender;
     private String identityCardType;
     private String  identityCardNo;
