@@ -1,4 +1,4 @@
-package com.entity.user;
+package com.geely.entity.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerIntegral {
+public class CustomerFootprint {
 
-    private Integer customerAddrId;
+    private Integer customerFootprintId;
     private Integer customerId;
-    private Integer integralId;
+    private Integer footprintId;
 
 }

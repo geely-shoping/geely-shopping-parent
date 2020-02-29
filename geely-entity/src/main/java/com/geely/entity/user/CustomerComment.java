@@ -1,4 +1,4 @@
-package com.entity.user;
+package com.geely.entity.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerCollect {
+public class CustomerComment {
 
-    private Integer customerCollectId;
+    private Integer CustomerCommentId;
     private Integer customerId;
-    private Integer collectId;
+    private Integer commentId;
 
 }
