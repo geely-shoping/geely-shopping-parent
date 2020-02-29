@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.MyFootprintTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.MyFootprintTb">
+    <!--@mbg.generated-->
+    <id column="footprint_id" jdbcType="INTEGER" property="footprintId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="browse_time" jdbcType="TIMESTAMP" property="browseTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    footprint_id, product_id, browse_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from my_footprint_tb
+    where footprint_id = #{footprintId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from my_footprint_tb
+    where footprint_id = #{footprintId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="footprint_id" keyProperty="footprintId" parameterType="com.geely.entity.MyFootprintTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into my_footprint_tb (product_id, browse_time)
+    values (#{productId,jdbcType=INTEGER}, #{browseTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="footprint_id" keyProperty="footprintId" parameterType="com.geely.entity.MyFootprintTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into my_footprint_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="browseTime != null">
+        browse_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="browseTime != null">
+        #{browseTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.MyFootprintTb">
+    <!--@mbg.generated-->
+    update my_footprint_tb
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="browseTime != null">
+        browse_time = #{browseTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where footprint_id = #{footprintId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.MyFootprintTb">
+    <!--@mbg.generated-->
+    update my_footprint_tb
+    set product_id = #{productId,jdbcType=INTEGER},
+      browse_time = #{browseTime,jdbcType=TIMESTAMP}
+    where footprint_id = #{footprintId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update my_footprint_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="product_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when footprint_id = #{item.footprintId,jdbcType=INTEGER} then #{item.productId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="browse_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when footprint_id = #{item.footprintId,jdbcType=INTEGER} then #{item.browseTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where footprint_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.footprintId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="footprint_id" keyProperty="footprintId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into my_footprint_tb
+    (product_id, browse_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.productId,jdbcType=INTEGER}, #{item.browseTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

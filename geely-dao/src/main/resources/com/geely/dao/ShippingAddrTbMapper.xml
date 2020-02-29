@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.ShippingAddrTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.ShippingAddrTb">
+    <!--@mbg.generated-->
+    <id column="customer_addr_id" jdbcType="INTEGER" property="customerAddrId" />
+    <result column="zip" jdbcType="INTEGER" property="zip" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="is_default" jdbcType="VARCHAR" property="isDefault" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    customer_addr_id, zip, province, city, district, address, is_default, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from shipping_addr_tb
+    where customer_addr_id = #{customerAddrId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from shipping_addr_tb
+    where customer_addr_id = #{customerAddrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="customer_addr_id" keyProperty="customerAddrId" parameterType="com.geely.entity.ShippingAddrTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into shipping_addr_tb (zip, province, city, 
+      district, address, is_default, 
+      modified_time)
+    values (#{zip,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{district,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{isDefault,jdbcType=VARCHAR}, 
+      #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="customer_addr_id" keyProperty="customerAddrId" parameterType="com.geely.entity.ShippingAddrTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into shipping_addr_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zip != null">
+        zip,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zip != null">
+        #{zip,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.ShippingAddrTb">
+    <!--@mbg.generated-->
+    update shipping_addr_tb
+    <set>
+      <if test="zip != null">
+        zip = #{zip,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_addr_id = #{customerAddrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.ShippingAddrTb">
+    <!--@mbg.generated-->
+    update shipping_addr_tb
+    set zip = #{zip,jdbcType=INTEGER},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=VARCHAR},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where customer_addr_id = #{customerAddrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update shipping_addr_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="zip = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_addr_id = #{item.customerAddrId,jdbcType=INTEGER} then #{item.zip,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="province = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_addr_id = #{item.customerAddrId,jdbcType=INTEGER} then #{item.province,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="city = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_addr_id = #{item.customerAddrId,jdbcType=INTEGER} then #{item.city,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="district = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_addr_id = #{item.customerAddrId,jdbcType=INTEGER} then #{item.district,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="address = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_addr_id = #{item.customerAddrId,jdbcType=INTEGER} then #{item.address,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="is_default = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_addr_id = #{item.customerAddrId,jdbcType=INTEGER} then #{item.isDefault,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="modified_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_addr_id = #{item.customerAddrId,jdbcType=INTEGER} then #{item.modifiedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where customer_addr_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.customerAddrId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="customer_addr_id" keyProperty="customerAddrId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into shipping_addr_tb
+    (zip, province, city, district, address, is_default, modified_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.zip,jdbcType=INTEGER}, #{item.province,jdbcType=VARCHAR}, #{item.city,jdbcType=VARCHAR}, 
+        #{item.district,jdbcType=VARCHAR}, #{item.address,jdbcType=VARCHAR}, #{item.isDefault,jdbcType=VARCHAR}, 
+        #{item.modifiedTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

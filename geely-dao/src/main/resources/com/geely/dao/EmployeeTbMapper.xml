@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.EmployeeTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.EmployeeTb">
+    <!--@mbg.generated-->
+    <id column="employee_id" jdbcType="INTEGER" property="employeeId" />
+    <result column="employee_name" jdbcType="VARCHAR" property="employeeName" />
+    <result column="employee_sex" jdbcType="CHAR" property="employeeSex" />
+    <result column="employee_phone" jdbcType="CHAR" property="employeePhone" />
+    <result column="employee_card" jdbcType="CHAR" property="employeeCard" />
+    <result column="employee_school" jdbcType="VARCHAR" property="employeeSchool" />
+    <result column="employee_entry" jdbcType="TIMESTAMP" property="employeeEntry" />
+    <result column="employee_last" jdbcType="TIMESTAMP" property="employeeLast" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    employee_id, employee_name, employee_sex, employee_phone, employee_card, employee_school, 
+    employee_entry, employee_last
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from employee_tb
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from employee_tb
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="employee_id" keyProperty="employeeId" parameterType="com.geely.entity.EmployeeTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_tb (employee_name, employee_sex, employee_phone, 
+      employee_card, employee_school, employee_entry, 
+      employee_last)
+    values (#{employeeName,jdbcType=VARCHAR}, #{employeeSex,jdbcType=CHAR}, #{employeePhone,jdbcType=CHAR}, 
+      #{employeeCard,jdbcType=CHAR}, #{employeeSchool,jdbcType=VARCHAR}, #{employeeEntry,jdbcType=TIMESTAMP}, 
+      #{employeeLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="employee_id" keyProperty="employeeId" parameterType="com.geely.entity.EmployeeTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="employeeName != null">
+        employee_name,
+      </if>
+      <if test="employeeSex != null">
+        employee_sex,
+      </if>
+      <if test="employeePhone != null">
+        employee_phone,
+      </if>
+      <if test="employeeCard != null">
+        employee_card,
+      </if>
+      <if test="employeeSchool != null">
+        employee_school,
+      </if>
+      <if test="employeeEntry != null">
+        employee_entry,
+      </if>
+      <if test="employeeLast != null">
+        employee_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="employeeName != null">
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeSex != null">
+        #{employeeSex,jdbcType=CHAR},
+      </if>
+      <if test="employeePhone != null">
+        #{employeePhone,jdbcType=CHAR},
+      </if>
+      <if test="employeeCard != null">
+        #{employeeCard,jdbcType=CHAR},
+      </if>
+      <if test="employeeSchool != null">
+        #{employeeSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeEntry != null">
+        #{employeeEntry,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeLast != null">
+        #{employeeLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.EmployeeTb">
+    <!--@mbg.generated-->
+    update employee_tb
+    <set>
+      <if test="employeeName != null">
+        employee_name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeSex != null">
+        employee_sex = #{employeeSex,jdbcType=CHAR},
+      </if>
+      <if test="employeePhone != null">
+        employee_phone = #{employeePhone,jdbcType=CHAR},
+      </if>
+      <if test="employeeCard != null">
+        employee_card = #{employeeCard,jdbcType=CHAR},
+      </if>
+      <if test="employeeSchool != null">
+        employee_school = #{employeeSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeEntry != null">
+        employee_entry = #{employeeEntry,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeLast != null">
+        employee_last = #{employeeLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.EmployeeTb">
+    <!--@mbg.generated-->
+    update employee_tb
+    set employee_name = #{employeeName,jdbcType=VARCHAR},
+      employee_sex = #{employeeSex,jdbcType=CHAR},
+      employee_phone = #{employeePhone,jdbcType=CHAR},
+      employee_card = #{employeeCard,jdbcType=CHAR},
+      employee_school = #{employeeSchool,jdbcType=VARCHAR},
+      employee_entry = #{employeeEntry,jdbcType=TIMESTAMP},
+      employee_last = #{employeeLast,jdbcType=TIMESTAMP}
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update employee_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="employee_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when employee_id = #{item.employeeId,jdbcType=INTEGER} then #{item.employeeName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="employee_sex = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when employee_id = #{item.employeeId,jdbcType=INTEGER} then #{item.employeeSex,jdbcType=CHAR}
+        </foreach>
+      </trim>
+      <trim prefix="employee_phone = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when employee_id = #{item.employeeId,jdbcType=INTEGER} then #{item.employeePhone,jdbcType=CHAR}
+        </foreach>
+      </trim>
+      <trim prefix="employee_card = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when employee_id = #{item.employeeId,jdbcType=INTEGER} then #{item.employeeCard,jdbcType=CHAR}
+        </foreach>
+      </trim>
+      <trim prefix="employee_school = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when employee_id = #{item.employeeId,jdbcType=INTEGER} then #{item.employeeSchool,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="employee_entry = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when employee_id = #{item.employeeId,jdbcType=INTEGER} then #{item.employeeEntry,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="employee_last = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when employee_id = #{item.employeeId,jdbcType=INTEGER} then #{item.employeeLast,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where employee_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.employeeId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="employee_id" keyProperty="employeeId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_tb
+    (employee_name, employee_sex, employee_phone, employee_card, employee_school, employee_entry, 
+      employee_last)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.employeeName,jdbcType=VARCHAR}, #{item.employeeSex,jdbcType=CHAR}, #{item.employeePhone,jdbcType=CHAR}, 
+        #{item.employeeCard,jdbcType=CHAR}, #{item.employeeSchool,jdbcType=VARCHAR}, #{item.employeeEntry,jdbcType=TIMESTAMP}, 
+        #{item.employeeLast,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.CustomerAccountTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.CustomerAccountTb">
+    <!--@mbg.generated-->
+    <id column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="customer_stats" jdbcType="VARCHAR" property="customerStats" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    customer_id, username, `password`, customer_stats, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from customer_account_tb
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from customer_account_tb
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="customer_id" keyProperty="customerId" parameterType="com.geely.entity.CustomerAccountTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_account_tb (username, `password`, customer_stats, 
+      modified_time)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{customerStats,jdbcType=VARCHAR}, 
+      #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="customer_id" keyProperty="customerId" parameterType="com.geely.entity.CustomerAccountTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_account_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="customerStats != null">
+        customer_stats,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="customerStats != null">
+        #{customerStats,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.CustomerAccountTb">
+    <!--@mbg.generated-->
+    update customer_account_tb
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="customerStats != null">
+        customer_stats = #{customerStats,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.CustomerAccountTb">
+    <!--@mbg.generated-->
+    update customer_account_tb
+    set username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      customer_stats = #{customerStats,jdbcType=VARCHAR},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update customer_account_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="username = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_id = #{item.customerId,jdbcType=INTEGER} then #{item.username,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="`password` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_id = #{item.customerId,jdbcType=INTEGER} then #{item.password,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="customer_stats = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_id = #{item.customerId,jdbcType=INTEGER} then #{item.customerStats,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="modified_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_id = #{item.customerId,jdbcType=INTEGER} then #{item.modifiedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where customer_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.customerId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="customer_id" keyProperty="customerId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_account_tb
+    (username, `password`, customer_stats, modified_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.username,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}, #{item.customerStats,jdbcType=VARCHAR}, 
+        #{item.modifiedTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

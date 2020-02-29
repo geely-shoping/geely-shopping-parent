@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.ShoppingCartTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.ShoppingCartTb">
+    <!--@mbg.generated-->
+    <id column="shopping_cart_id" jdbcType="INTEGER" property="shoppingCartId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_amount" jdbcType="INTEGER" property="productAmount" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    shopping_cart_id, product_id, product_amount, product_price, add_time, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from shopping_cart_tb
+    where shopping_cart_id = #{shoppingCartId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from shopping_cart_tb
+    where shopping_cart_id = #{shoppingCartId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="shopping_cart_id" keyProperty="shoppingCartId" parameterType="com.geely.entity.ShoppingCartTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into shopping_cart_tb (product_id, product_amount, product_price, 
+      add_time, modified_time)
+    values (#{productId,jdbcType=INTEGER}, #{productAmount,jdbcType=INTEGER}, #{productPrice,jdbcType=DECIMAL}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="shopping_cart_id" keyProperty="shoppingCartId" parameterType="com.geely.entity.ShoppingCartTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into shopping_cart_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productAmount != null">
+        product_amount,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productAmount != null">
+        #{productAmount,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.ShoppingCartTb">
+    <!--@mbg.generated-->
+    update shopping_cart_tb
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="productAmount != null">
+        product_amount = #{productAmount,jdbcType=INTEGER},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where shopping_cart_id = #{shoppingCartId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.ShoppingCartTb">
+    <!--@mbg.generated-->
+    update shopping_cart_tb
+    set product_id = #{productId,jdbcType=INTEGER},
+      product_amount = #{productAmount,jdbcType=INTEGER},
+      product_price = #{productPrice,jdbcType=DECIMAL},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where shopping_cart_id = #{shoppingCartId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update shopping_cart_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="product_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when shopping_cart_id = #{item.shoppingCartId,jdbcType=INTEGER} then #{item.productId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="product_amount = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when shopping_cart_id = #{item.shoppingCartId,jdbcType=INTEGER} then #{item.productAmount,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="product_price = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when shopping_cart_id = #{item.shoppingCartId,jdbcType=INTEGER} then #{item.productPrice,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="add_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when shopping_cart_id = #{item.shoppingCartId,jdbcType=INTEGER} then #{item.addTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="modified_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when shopping_cart_id = #{item.shoppingCartId,jdbcType=INTEGER} then #{item.modifiedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where shopping_cart_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.shoppingCartId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="shopping_cart_id" keyProperty="shoppingCartId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into shopping_cart_tb
+    (product_id, product_amount, product_price, add_time, modified_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.productId,jdbcType=INTEGER}, #{item.productAmount,jdbcType=INTEGER}, #{item.productPrice,jdbcType=DECIMAL}, 
+        #{item.addTime,jdbcType=TIMESTAMP}, #{item.modifiedTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

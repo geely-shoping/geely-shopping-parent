@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.OrderMasterTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.OrderMasterTb">
+    <!--@mbg.generated-->
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_uuid" jdbcType="VARCHAR" property="orderUuid" />
+    <result column="payment_method" jdbcType="VARCHAR" property="paymentMethod" />
+    <result column="order_money" jdbcType="DECIMAL" property="orderMoney" />
+    <result column="district_money" jdbcType="DECIMAL" property="districtMoney" />
+    <result column="payment_money" jdbcType="DECIMAL" property="paymentMoney" />
+    <result column="overbooking_time" jdbcType="TIMESTAMP" property="overbookingTime" />
+    <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime" />
+    <result column="shipments_time" jdbcType="TIMESTAMP" property="shipmentsTime" />
+    <result column="receiving_time" jdbcType="TIMESTAMP" property="receivingTime" />
+    <result column="order_state" jdbcType="VARCHAR" property="orderState" />
+    <result column="order_point" jdbcType="INTEGER" property="orderPoint" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    order_id, order_uuid, payment_method, order_money, district_money, payment_money, 
+    overbooking_time, payment_time, shipments_time, receiving_time, order_state, order_point, 
+    modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from order_master_tb
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from order_master_tb
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="order_id" keyProperty="orderId" parameterType="com.geely.entity.OrderMasterTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_master_tb (order_uuid, payment_method, order_money, 
+      district_money, payment_money, overbooking_time, 
+      payment_time, shipments_time, receiving_time, 
+      order_state, order_point, modified_time
+      )
+    values (#{orderUuid,jdbcType=VARCHAR}, #{paymentMethod,jdbcType=VARCHAR}, #{orderMoney,jdbcType=DECIMAL}, 
+      #{districtMoney,jdbcType=DECIMAL}, #{paymentMoney,jdbcType=DECIMAL}, #{overbookingTime,jdbcType=TIMESTAMP}, 
+      #{paymentTime,jdbcType=TIMESTAMP}, #{shipmentsTime,jdbcType=TIMESTAMP}, #{receivingTime,jdbcType=TIMESTAMP}, 
+      #{orderState,jdbcType=VARCHAR}, #{orderPoint,jdbcType=INTEGER}, #{modifiedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="order_id" keyProperty="orderId" parameterType="com.geely.entity.OrderMasterTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_master_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderUuid != null">
+        order_uuid,
+      </if>
+      <if test="paymentMethod != null">
+        payment_method,
+      </if>
+      <if test="orderMoney != null">
+        order_money,
+      </if>
+      <if test="districtMoney != null">
+        district_money,
+      </if>
+      <if test="paymentMoney != null">
+        payment_money,
+      </if>
+      <if test="overbookingTime != null">
+        overbooking_time,
+      </if>
+      <if test="paymentTime != null">
+        payment_time,
+      </if>
+      <if test="shipmentsTime != null">
+        shipments_time,
+      </if>
+      <if test="receivingTime != null">
+        receiving_time,
+      </if>
+      <if test="orderState != null">
+        order_state,
+      </if>
+      <if test="orderPoint != null">
+        order_point,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderUuid != null">
+        #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentMethod != null">
+        #{paymentMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMoney != null">
+        #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="districtMoney != null">
+        #{districtMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentMoney != null">
+        #{paymentMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="overbookingTime != null">
+        #{overbookingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentTime != null">
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shipmentsTime != null">
+        #{shipmentsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivingTime != null">
+        #{receivingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderState != null">
+        #{orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPoint != null">
+        #{orderPoint,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.OrderMasterTb">
+    <!--@mbg.generated-->
+    update order_master_tb
+    <set>
+      <if test="orderUuid != null">
+        order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentMethod != null">
+        payment_method = #{paymentMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMoney != null">
+        order_money = #{orderMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="districtMoney != null">
+        district_money = #{districtMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentMoney != null">
+        payment_money = #{paymentMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="overbookingTime != null">
+        overbooking_time = #{overbookingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentTime != null">
+        payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shipmentsTime != null">
+        shipments_time = #{shipmentsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivingTime != null">
+        receiving_time = #{receivingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderState != null">
+        order_state = #{orderState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPoint != null">
+        order_point = #{orderPoint,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.OrderMasterTb">
+    <!--@mbg.generated-->
+    update order_master_tb
+    set order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      payment_method = #{paymentMethod,jdbcType=VARCHAR},
+      order_money = #{orderMoney,jdbcType=DECIMAL},
+      district_money = #{districtMoney,jdbcType=DECIMAL},
+      payment_money = #{paymentMoney,jdbcType=DECIMAL},
+      overbooking_time = #{overbookingTime,jdbcType=TIMESTAMP},
+      payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      shipments_time = #{shipmentsTime,jdbcType=TIMESTAMP},
+      receiving_time = #{receivingTime,jdbcType=TIMESTAMP},
+      order_state = #{orderState,jdbcType=VARCHAR},
+      order_point = #{orderPoint,jdbcType=INTEGER},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update order_master_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="order_uuid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.orderUuid,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="payment_method = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.paymentMethod,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="order_money = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.orderMoney,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="district_money = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.districtMoney,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="payment_money = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.paymentMoney,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="overbooking_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.overbookingTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="payment_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.paymentTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="shipments_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.shipmentsTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="receiving_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.receivingTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="order_state = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.orderState,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="order_point = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.orderPoint,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="modified_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_id = #{item.orderId,jdbcType=INTEGER} then #{item.modifiedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where order_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.orderId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="order_id" keyProperty="orderId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_master_tb
+    (order_uuid, payment_method, order_money, district_money, payment_money, overbooking_time, 
+      payment_time, shipments_time, receiving_time, order_state, order_point, modified_time
+      )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.orderUuid,jdbcType=VARCHAR}, #{item.paymentMethod,jdbcType=VARCHAR}, #{item.orderMoney,jdbcType=DECIMAL}, 
+        #{item.districtMoney,jdbcType=DECIMAL}, #{item.paymentMoney,jdbcType=DECIMAL}, 
+        #{item.overbookingTime,jdbcType=TIMESTAMP}, #{item.paymentTime,jdbcType=TIMESTAMP}, 
+        #{item.shipmentsTime,jdbcType=TIMESTAMP}, #{item.receivingTime,jdbcType=TIMESTAMP}, 
+        #{item.orderState,jdbcType=VARCHAR}, #{item.orderPoint,jdbcType=INTEGER}, #{item.modifiedTime,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+</mapper>

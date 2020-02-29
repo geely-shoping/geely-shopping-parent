@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.BalanceChangeTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.BalanceChangeTb">
+    <!--@mbg.generated-->
+    <id column="balance_change_id" jdbcType="INTEGER" property="balanceChangeId" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="source_detail" jdbcType="INTEGER" property="sourceDetail" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    balance_change_id, `source`, source_detail, create_time, amount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from balance_change_tb
+    where balance_change_id = #{balanceChangeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from balance_change_tb
+    where balance_change_id = #{balanceChangeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="balance_change_id" keyProperty="balanceChangeId" parameterType="com.geely.entity.BalanceChangeTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into balance_change_tb (`source`, source_detail, create_time, 
+      amount)
+    values (#{source,jdbcType=VARCHAR}, #{sourceDetail,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{amount,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" keyColumn="balance_change_id" keyProperty="balanceChangeId" parameterType="com.geely.entity.BalanceChangeTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into balance_change_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="sourceDetail != null">
+        source_detail,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceDetail != null">
+        #{sourceDetail,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.BalanceChangeTb">
+    <!--@mbg.generated-->
+    update balance_change_tb
+    <set>
+      <if test="source != null">
+        `source` = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceDetail != null">
+        source_detail = #{sourceDetail,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where balance_change_id = #{balanceChangeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.BalanceChangeTb">
+    <!--@mbg.generated-->
+    update balance_change_tb
+    set `source` = #{source,jdbcType=VARCHAR},
+      source_detail = #{sourceDetail,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      amount = #{amount,jdbcType=DECIMAL}
+    where balance_change_id = #{balanceChangeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update balance_change_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="`source` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when balance_change_id = #{item.balanceChangeId,jdbcType=INTEGER} then #{item.source,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="source_detail = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when balance_change_id = #{item.balanceChangeId,jdbcType=INTEGER} then #{item.sourceDetail,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when balance_change_id = #{item.balanceChangeId,jdbcType=INTEGER} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="amount = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when balance_change_id = #{item.balanceChangeId,jdbcType=INTEGER} then #{item.amount,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+    </trim>
+    where balance_change_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.balanceChangeId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="balance_change_id" keyProperty="balanceChangeId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into balance_change_tb
+    (`source`, source_detail, create_time, amount)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.source,jdbcType=VARCHAR}, #{item.sourceDetail,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.amount,jdbcType=DECIMAL})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.MenuTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.MenuTb">
+    <!--@mbg.generated-->
+    <id column="menu_id" jdbcType="INTEGER" property="menuId" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_parent" jdbcType="CHAR" property="menuParent" />
+    <result column="menu_pid" jdbcType="INTEGER" property="menuPid" />
+    <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    menu_id, menu_name, menu_parent, menu_pid, menu_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from menu_tb
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from menu_tb
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="menu_id" keyProperty="menuId" parameterType="com.geely.entity.MenuTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into menu_tb (menu_name, menu_parent, menu_pid, 
+      menu_url)
+    values (#{menuName,jdbcType=VARCHAR}, #{menuParent,jdbcType=CHAR}, #{menuPid,jdbcType=INTEGER}, 
+      #{menuUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="menu_id" keyProperty="menuId" parameterType="com.geely.entity.MenuTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into menu_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="menuParent != null">
+        menu_parent,
+      </if>
+      <if test="menuPid != null">
+        menu_pid,
+      </if>
+      <if test="menuUrl != null">
+        menu_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuParent != null">
+        #{menuParent,jdbcType=CHAR},
+      </if>
+      <if test="menuPid != null">
+        #{menuPid,jdbcType=INTEGER},
+      </if>
+      <if test="menuUrl != null">
+        #{menuUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.MenuTb">
+    <!--@mbg.generated-->
+    update menu_tb
+    <set>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuParent != null">
+        menu_parent = #{menuParent,jdbcType=CHAR},
+      </if>
+      <if test="menuPid != null">
+        menu_pid = #{menuPid,jdbcType=INTEGER},
+      </if>
+      <if test="menuUrl != null">
+        menu_url = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.MenuTb">
+    <!--@mbg.generated-->
+    update menu_tb
+    set menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_parent = #{menuParent,jdbcType=CHAR},
+      menu_pid = #{menuPid,jdbcType=INTEGER},
+      menu_url = #{menuUrl,jdbcType=VARCHAR}
+    where menu_id = #{menuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update menu_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="menu_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=INTEGER} then #{item.menuName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="menu_parent = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=INTEGER} then #{item.menuParent,jdbcType=CHAR}
+        </foreach>
+      </trim>
+      <trim prefix="menu_pid = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=INTEGER} then #{item.menuPid,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="menu_url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when menu_id = #{item.menuId,jdbcType=INTEGER} then #{item.menuUrl,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+    </trim>
+    where menu_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.menuId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="menu_id" keyProperty="menuId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into menu_tb
+    (menu_name, menu_parent, menu_pid, menu_url)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.menuName,jdbcType=VARCHAR}, #{item.menuParent,jdbcType=CHAR}, #{item.menuPid,jdbcType=INTEGER}, 
+        #{item.menuUrl,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

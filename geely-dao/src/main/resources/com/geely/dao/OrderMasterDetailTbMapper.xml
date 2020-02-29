@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.OrderMasterDetailTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.OrderMasterDetailTb">
+    <!--@mbg.generated-->
+    <id column="order_master_detail_id" jdbcType="INTEGER" property="orderMasterDetailId" />
+    <result column="order_master_id" jdbcType="INTEGER" property="orderMasterId" />
+    <result column="order_detail_id" jdbcType="INTEGER" property="orderDetailId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    order_master_detail_id, order_master_id, order_detail_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from order_master_detail_tb
+    where order_master_detail_id = #{orderMasterDetailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from order_master_detail_tb
+    where order_master_detail_id = #{orderMasterDetailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="order_master_detail_id" keyProperty="orderMasterDetailId" parameterType="com.geely.entity.OrderMasterDetailTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_master_detail_tb (order_master_id, order_detail_id)
+    values (#{orderMasterId,jdbcType=INTEGER}, #{orderDetailId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="order_master_detail_id" keyProperty="orderMasterDetailId" parameterType="com.geely.entity.OrderMasterDetailTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_master_detail_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderMasterId != null">
+        order_master_id,
+      </if>
+      <if test="orderDetailId != null">
+        order_detail_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderMasterId != null">
+        #{orderMasterId,jdbcType=INTEGER},
+      </if>
+      <if test="orderDetailId != null">
+        #{orderDetailId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.OrderMasterDetailTb">
+    <!--@mbg.generated-->
+    update order_master_detail_tb
+    <set>
+      <if test="orderMasterId != null">
+        order_master_id = #{orderMasterId,jdbcType=INTEGER},
+      </if>
+      <if test="orderDetailId != null">
+        order_detail_id = #{orderDetailId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where order_master_detail_id = #{orderMasterDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.OrderMasterDetailTb">
+    <!--@mbg.generated-->
+    update order_master_detail_tb
+    set order_master_id = #{orderMasterId,jdbcType=INTEGER},
+      order_detail_id = #{orderDetailId,jdbcType=INTEGER}
+    where order_master_detail_id = #{orderMasterDetailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update order_master_detail_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="order_master_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_master_detail_id = #{item.orderMasterDetailId,jdbcType=INTEGER} then #{item.orderMasterId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="order_detail_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when order_master_detail_id = #{item.orderMasterDetailId,jdbcType=INTEGER} then #{item.orderDetailId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where order_master_detail_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.orderMasterDetailId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="order_master_detail_id" keyProperty="orderMasterDetailId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into order_master_detail_tb
+    (order_master_id, order_detail_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.orderMasterId,jdbcType=INTEGER}, #{item.orderDetailId,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.ProductDetailsTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.ProductDetailsTb">
+    <!--@mbg.generated-->
+    <id column="details_id" jdbcType="INTEGER" property="detailsId" />
+    <result column="details_name" jdbcType="VARCHAR" property="detailsName" />
+    <result column="details_image_one" jdbcType="VARCHAR" property="detailsImageOne" />
+    <result column="details_image_two" jdbcType="VARCHAR" property="detailsImageTwo" />
+    <result column="details_image_three" jdbcType="VARCHAR" property="detailsImageThree" />
+    <result column="details_image_four" jdbcType="VARCHAR" property="detailsImageFour" />
+    <result column="details_image_five" jdbcType="VARCHAR" property="detailsImageFive" />
+    <result column="details_last" jdbcType="TIMESTAMP" property="detailsLast" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    details_id, details_name, details_image_one, details_image_two, details_image_three, 
+    details_image_four, details_image_five, details_last
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from product_details_tb
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from product_details_tb
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="details_id" keyProperty="detailsId" parameterType="com.geely.entity.ProductDetailsTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_details_tb (details_name, details_image_one, details_image_two, 
+      details_image_three, details_image_four, details_image_five, 
+      details_last)
+    values (#{detailsName,jdbcType=VARCHAR}, #{detailsImageOne,jdbcType=VARCHAR}, #{detailsImageTwo,jdbcType=VARCHAR}, 
+      #{detailsImageThree,jdbcType=VARCHAR}, #{detailsImageFour,jdbcType=VARCHAR}, #{detailsImageFive,jdbcType=VARCHAR}, 
+      #{detailsLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="details_id" keyProperty="detailsId" parameterType="com.geely.entity.ProductDetailsTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_details_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailsName != null">
+        details_name,
+      </if>
+      <if test="detailsImageOne != null">
+        details_image_one,
+      </if>
+      <if test="detailsImageTwo != null">
+        details_image_two,
+      </if>
+      <if test="detailsImageThree != null">
+        details_image_three,
+      </if>
+      <if test="detailsImageFour != null">
+        details_image_four,
+      </if>
+      <if test="detailsImageFive != null">
+        details_image_five,
+      </if>
+      <if test="detailsLast != null">
+        details_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailsName != null">
+        #{detailsName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageOne != null">
+        #{detailsImageOne,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageTwo != null">
+        #{detailsImageTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageThree != null">
+        #{detailsImageThree,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageFour != null">
+        #{detailsImageFour,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageFive != null">
+        #{detailsImageFive,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsLast != null">
+        #{detailsLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.ProductDetailsTb">
+    <!--@mbg.generated-->
+    update product_details_tb
+    <set>
+      <if test="detailsName != null">
+        details_name = #{detailsName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageOne != null">
+        details_image_one = #{detailsImageOne,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageTwo != null">
+        details_image_two = #{detailsImageTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageThree != null">
+        details_image_three = #{detailsImageThree,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageFour != null">
+        details_image_four = #{detailsImageFour,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageFive != null">
+        details_image_five = #{detailsImageFive,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsLast != null">
+        details_last = #{detailsLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.ProductDetailsTb">
+    <!--@mbg.generated-->
+    update product_details_tb
+    set details_name = #{detailsName,jdbcType=VARCHAR},
+      details_image_one = #{detailsImageOne,jdbcType=VARCHAR},
+      details_image_two = #{detailsImageTwo,jdbcType=VARCHAR},
+      details_image_three = #{detailsImageThree,jdbcType=VARCHAR},
+      details_image_four = #{detailsImageFour,jdbcType=VARCHAR},
+      details_image_five = #{detailsImageFive,jdbcType=VARCHAR},
+      details_last = #{detailsLast,jdbcType=TIMESTAMP}
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_details_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="details_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when details_id = #{item.detailsId,jdbcType=INTEGER} then #{item.detailsName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="details_image_one = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when details_id = #{item.detailsId,jdbcType=INTEGER} then #{item.detailsImageOne,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="details_image_two = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when details_id = #{item.detailsId,jdbcType=INTEGER} then #{item.detailsImageTwo,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="details_image_three = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when details_id = #{item.detailsId,jdbcType=INTEGER} then #{item.detailsImageThree,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="details_image_four = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when details_id = #{item.detailsId,jdbcType=INTEGER} then #{item.detailsImageFour,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="details_image_five = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when details_id = #{item.detailsId,jdbcType=INTEGER} then #{item.detailsImageFive,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="details_last = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when details_id = #{item.detailsId,jdbcType=INTEGER} then #{item.detailsLast,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where details_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.detailsId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="details_id" keyProperty="detailsId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_details_tb
+    (details_name, details_image_one, details_image_two, details_image_three, details_image_four, 
+      details_image_five, details_last)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.detailsName,jdbcType=VARCHAR}, #{item.detailsImageOne,jdbcType=VARCHAR}, 
+        #{item.detailsImageTwo,jdbcType=VARCHAR}, #{item.detailsImageThree,jdbcType=VARCHAR}, 
+        #{item.detailsImageFour,jdbcType=VARCHAR}, #{item.detailsImageFive,jdbcType=VARCHAR}, 
+        #{item.detailsLast,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

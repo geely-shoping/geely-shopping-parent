@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisCodeHelperDatasource">
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="batchInsert" value="true" />
+        <option name="generateService" value="true" />
+        <option name="generateServiceInterface" value="true" />
+        <option name="javaMapperPackage" value="com.geely.dao" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/geely-dao/src/main/java" />
+        <option name="javaModelPackage" value="com.geely.entity" />
+        <option name="javaModelPath" value="E:\Test\spring-code\geely-shopping-parent\geely-entity\src\main\java" />
+        <option name="lastDatabaseCrudChooseModuleName" value="geely-dao" />
+        <option name="moduleNameToPackageAndPathMap">
+          <map>
+            <entry key="geely-dao">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.geely.dao" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/geely-dao/src/main/java" />
+                  <option name="javaModelPacakge" value="com.geely.entity" />
+                  <option name="javaModelPath" value="E:\Test\spring-code\geely-shopping-parent\geely-entity\src\main\java" />
+                  <option name="javaServiceInterfacePackage" value="com.geely.service" />
+                  <option name="javaServiceInterfacePath" value="E:\Test\spring-code\geely-shopping-parent\geely-service\src\main\java" />
+                  <option name="javaServicePackage" value="com.geely.service.impl" />
+                  <option name="javaServicePath" value="E:\Test\spring-code\geely-shopping-parent\geely-service\src\main\java" />
+                  <option name="xmlPackage" value="com.geely.dao" />
+                  <option name="xmlPath" value="E:\Test\spring-code\geely-shopping-parent\geely-dao\src\main\resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="tableGenerateConfigs">
+          <map>
+            <entry key="geely:account_dept_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="account_dept_id" />
+                  <option name="javaModelName" value="AccountDeptTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:account_info_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="account_info_id" />
+                  <option name="javaModelName" value="AccountInfoTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:balance_change_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="balance_change_id" />
+                  <option name="javaModelName" value="BalanceChangeTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:collect_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="collect_id" />
+                  <option name="javaModelName" value="CollectTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:comment_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="comment_id" />
+                  <option name="javaModelName" value="CommentTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:coupon_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="coupon_id" />
+                  <option name="javaModelName" value="CouponTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_account_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_id" />
+                  <option name="javaModelName" value="CustomerAccountTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_addr_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_addr_id" />
+                  <option name="javaModelName" value="CustomerAddrTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_balance_change_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_balance_change_id" />
+                  <option name="javaModelName" value="CustomerBalanceChangeTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_collect_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_collect_id" />
+                  <option name="javaModelName" value="CustomerCollectTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_comment_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_comment_id" />
+                  <option name="javaModelName" value="CustomerCommentTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_coupon_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_coupon_id" />
+                  <option name="javaModelName" value="CustomerCouponTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_footpring_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_footprint_id" />
+                  <option name="javaModelName" value="CustomerFootpringTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_grade_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_grade_id" />
+                  <option name="javaModelName" value="CustomerGradeTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_info_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_info_id" />
+                  <option name="javaModelName" value="CustomerInfoTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_integral_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_addr_id" />
+                  <option name="javaModelName" value="CustomerIntegralTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_order_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_order_id" />
+                  <option name="javaModelName" value="CustomerOrderTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:customer_shopping_cart_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_shopping_cart_id" />
+                  <option name="javaModelName" value="CustomerShoppingCartTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:dept_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="dept_id" />
+                  <option name="javaModelName" value="DeptTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:employee_account_relation_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="emp_account_id" />
+                  <option name="javaModelName" value="EmployeeAccountRelationTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:employee_account_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="account_id" />
+                  <option name="javaModelName" value="EmployeeAccountTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:employee_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="employee_id" />
+                  <option name="javaModelName" value="EmployeeTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:grade_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_grade_id" />
+                  <option name="javaModelName" value="GradeTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:integral_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_integral_id" />
+                  <option name="javaModelName" value="IntegralTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:menu_dept_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="menu_dept_id" />
+                  <option name="javaModelName" value="MenuDeptTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:menu_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="menu_id" />
+                  <option name="javaModelName" value="MenuTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:my_footprint_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="footprint_id" />
+                  <option name="javaModelName" value="MyFootprintTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:order_detail_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="order_detail_id" />
+                  <option name="javaModelName" value="OrderDetailTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:order_master_detail_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="order_master_detail_id" />
+                  <option name="javaModelName" value="OrderMasterDetailTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:order_master_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="order_id" />
+                  <option name="javaModelName" value="OrderMasterTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:prodcut_model_relation_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="pro_color_id" />
+                  <option name="javaModelName" value="ProdcutModelRelationTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_category_relation_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="pro_category_id" />
+                  <option name="javaModelName" value="ProductCategoryRelationTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_category_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="category_id" />
+                  <option name="javaModelName" value="ProductCategoryTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_color_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="color_id" />
+                  <option name="javaModelName" value="ProductColorTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_details_relation_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="pro_details_id" />
+                  <option name="javaModelName" value="ProductDetailsRelationTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_details_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="details_id" />
+                  <option name="javaModelName" value="ProductDetailsTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_image_relation_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="pro_image_id" />
+                  <option name="javaModelName" value="ProductImageRelationTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_image_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="image_id" />
+                  <option name="javaModelName" value="ProductImageTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_model_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="model_id" />
+                  <option name="javaModelName" value="ProductModelTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:product_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="product_id" />
+                  <option name="javaModelName" value="ProductTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:shipping_addr_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="customer_addr_id" />
+                  <option name="javaModelName" value="ShippingAddrTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="geely:shopping_cart_tb">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="shopping_cart_id" />
+                  <option name="javaModelName" value="ShoppingCartTb" />
+                  <option name="moduleName" value="geely-dao" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="updateBatch" value="true" />
+        <option name="useLomBokOnModel" value="true" />
+        <option name="useSwagger" value="true" />
+        <option name="xmlMapperPackage" value="com.geely.dao" />
+        <option name="xmlMapperPath" value="E:\Test\spring-code\geely-shopping-parent\geely-dao\src\main\resources" />
+      </ProjectProfile>
+    </option>
+  </component>
+</project>

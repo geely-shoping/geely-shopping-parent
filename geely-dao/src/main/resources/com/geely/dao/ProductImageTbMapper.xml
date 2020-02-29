@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.ProductImageTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.ProductImageTb">
+    <!--@mbg.generated-->
+    <id column="image_id" jdbcType="INTEGER" property="imageId" />
+    <result column="image_name" jdbcType="VARCHAR" property="imageName" />
+    <result column="image_master" jdbcType="VARCHAR" property="imageMaster" />
+    <result column="image_status" jdbcType="VARCHAR" property="imageStatus" />
+    <result column="image_describe" jdbcType="VARCHAR" property="imageDescribe" />
+    <result column="image_last" jdbcType="TIMESTAMP" property="imageLast" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    image_id, image_name, image_master, image_status, image_describe, image_last
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from product_image_tb
+    where image_id = #{imageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from product_image_tb
+    where image_id = #{imageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="image_id" keyProperty="imageId" parameterType="com.geely.entity.ProductImageTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_image_tb (image_name, image_master, image_status, 
+      image_describe, image_last)
+    values (#{imageName,jdbcType=VARCHAR}, #{imageMaster,jdbcType=VARCHAR}, #{imageStatus,jdbcType=VARCHAR}, 
+      #{imageDescribe,jdbcType=VARCHAR}, #{imageLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="image_id" keyProperty="imageId" parameterType="com.geely.entity.ProductImageTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_image_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imageName != null">
+        image_name,
+      </if>
+      <if test="imageMaster != null">
+        image_master,
+      </if>
+      <if test="imageStatus != null">
+        image_status,
+      </if>
+      <if test="imageDescribe != null">
+        image_describe,
+      </if>
+      <if test="imageLast != null">
+        image_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imageName != null">
+        #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="imageMaster != null">
+        #{imageMaster,jdbcType=VARCHAR},
+      </if>
+      <if test="imageStatus != null">
+        #{imageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="imageDescribe != null">
+        #{imageDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="imageLast != null">
+        #{imageLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.ProductImageTb">
+    <!--@mbg.generated-->
+    update product_image_tb
+    <set>
+      <if test="imageName != null">
+        image_name = #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="imageMaster != null">
+        image_master = #{imageMaster,jdbcType=VARCHAR},
+      </if>
+      <if test="imageStatus != null">
+        image_status = #{imageStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="imageDescribe != null">
+        image_describe = #{imageDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="imageLast != null">
+        image_last = #{imageLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where image_id = #{imageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.ProductImageTb">
+    <!--@mbg.generated-->
+    update product_image_tb
+    set image_name = #{imageName,jdbcType=VARCHAR},
+      image_master = #{imageMaster,jdbcType=VARCHAR},
+      image_status = #{imageStatus,jdbcType=VARCHAR},
+      image_describe = #{imageDescribe,jdbcType=VARCHAR},
+      image_last = #{imageLast,jdbcType=TIMESTAMP}
+    where image_id = #{imageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_image_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="image_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when image_id = #{item.imageId,jdbcType=INTEGER} then #{item.imageName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="image_master = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when image_id = #{item.imageId,jdbcType=INTEGER} then #{item.imageMaster,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="image_status = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when image_id = #{item.imageId,jdbcType=INTEGER} then #{item.imageStatus,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="image_describe = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when image_id = #{item.imageId,jdbcType=INTEGER} then #{item.imageDescribe,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="image_last = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when image_id = #{item.imageId,jdbcType=INTEGER} then #{item.imageLast,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where image_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.imageId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="image_id" keyProperty="imageId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_image_tb
+    (image_name, image_master, image_status, image_describe, image_last)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.imageName,jdbcType=VARCHAR}, #{item.imageMaster,jdbcType=VARCHAR}, #{item.imageStatus,jdbcType=VARCHAR}, 
+        #{item.imageDescribe,jdbcType=VARCHAR}, #{item.imageLast,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

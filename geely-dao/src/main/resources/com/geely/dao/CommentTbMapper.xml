@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.CommentTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.CommentTb">
+    <!--@mbg.generated-->
+    <id column="comment_id" jdbcType="INTEGER" property="commentId" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="comment_product" jdbcType="INTEGER" property="commentProduct" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    comment_id, comment_content, comment_product, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from comment_tb
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from comment_tb
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="comment_id" keyProperty="commentId" parameterType="com.geely.entity.CommentTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into comment_tb (comment_content, comment_product, modified_time
+      )
+    values (#{commentContent,jdbcType=VARCHAR}, #{commentProduct,jdbcType=INTEGER}, #{modifiedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="comment_id" keyProperty="commentId" parameterType="com.geely.entity.CommentTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into comment_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentContent != null">
+        comment_content,
+      </if>
+      <if test="commentProduct != null">
+        comment_product,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentProduct != null">
+        #{commentProduct,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.CommentTb">
+    <!--@mbg.generated-->
+    update comment_tb
+    <set>
+      <if test="commentContent != null">
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentProduct != null">
+        comment_product = #{commentProduct,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.CommentTb">
+    <!--@mbg.generated-->
+    update comment_tb
+    set comment_content = #{commentContent,jdbcType=VARCHAR},
+      comment_product = #{commentProduct,jdbcType=INTEGER},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update comment_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="comment_content = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when comment_id = #{item.commentId,jdbcType=INTEGER} then #{item.commentContent,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="comment_product = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when comment_id = #{item.commentId,jdbcType=INTEGER} then #{item.commentProduct,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="modified_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when comment_id = #{item.commentId,jdbcType=INTEGER} then #{item.modifiedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where comment_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.commentId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="comment_id" keyProperty="commentId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into comment_tb
+    (comment_content, comment_product, modified_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.commentContent,jdbcType=VARCHAR}, #{item.commentProduct,jdbcType=INTEGER}, 
+        #{item.modifiedTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

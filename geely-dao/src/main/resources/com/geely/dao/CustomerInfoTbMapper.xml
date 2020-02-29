@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.CustomerInfoTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.CustomerInfoTb">
+    <!--@mbg.generated-->
+    <id column="customer_info_id" jdbcType="INTEGER" property="customerInfoId" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_gender" jdbcType="CHAR" property="customerGender" />
+    <result column="identity_card_type" jdbcType="VARCHAR" property="identityCardType" />
+    <result column="identity_card_no" jdbcType="VARCHAR" property="identityCardNo" />
+    <result column="custoemr_phone" jdbcType="CHAR" property="custoemrPhone" />
+    <result column="customer_email" jdbcType="VARCHAR" property="customerEmail" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    customer_info_id, customer_name, customer_gender, identity_card_type, identity_card_no, 
+    custoemr_phone, customer_email, balance, nickname, icon, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from customer_info_tb
+    where customer_info_id = #{customerInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from customer_info_tb
+    where customer_info_id = #{customerInfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="customer_info_id" keyProperty="customerInfoId" parameterType="com.geely.entity.CustomerInfoTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_info_tb (customer_name, customer_gender, identity_card_type, 
+      identity_card_no, custoemr_phone, customer_email, 
+      balance, nickname, icon, 
+      modified_time)
+    values (#{customerName,jdbcType=VARCHAR}, #{customerGender,jdbcType=CHAR}, #{identityCardType,jdbcType=VARCHAR}, 
+      #{identityCardNo,jdbcType=VARCHAR}, #{custoemrPhone,jdbcType=CHAR}, #{customerEmail,jdbcType=VARCHAR}, 
+      #{balance,jdbcType=DECIMAL}, #{nickname,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="customer_info_id" keyProperty="customerInfoId" parameterType="com.geely.entity.CustomerInfoTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_info_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerGender != null">
+        customer_gender,
+      </if>
+      <if test="identityCardType != null">
+        identity_card_type,
+      </if>
+      <if test="identityCardNo != null">
+        identity_card_no,
+      </if>
+      <if test="custoemrPhone != null">
+        custoemr_phone,
+      </if>
+      <if test="customerEmail != null">
+        customer_email,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerGender != null">
+        #{customerGender,jdbcType=CHAR},
+      </if>
+      <if test="identityCardType != null">
+        #{identityCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCardNo != null">
+        #{identityCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custoemrPhone != null">
+        #{custoemrPhone,jdbcType=CHAR},
+      </if>
+      <if test="customerEmail != null">
+        #{customerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.CustomerInfoTb">
+    <!--@mbg.generated-->
+    update customer_info_tb
+    <set>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerGender != null">
+        customer_gender = #{customerGender,jdbcType=CHAR},
+      </if>
+      <if test="identityCardType != null">
+        identity_card_type = #{identityCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCardNo != null">
+        identity_card_no = #{identityCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custoemrPhone != null">
+        custoemr_phone = #{custoemrPhone,jdbcType=CHAR},
+      </if>
+      <if test="customerEmail != null">
+        customer_email = #{customerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_info_id = #{customerInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.CustomerInfoTb">
+    <!--@mbg.generated-->
+    update customer_info_tb
+    set customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_gender = #{customerGender,jdbcType=CHAR},
+      identity_card_type = #{identityCardType,jdbcType=VARCHAR},
+      identity_card_no = #{identityCardNo,jdbcType=VARCHAR},
+      custoemr_phone = #{custoemrPhone,jdbcType=CHAR},
+      customer_email = #{customerEmail,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=DECIMAL},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where customer_info_id = #{customerInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update customer_info_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="customer_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.customerName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="customer_gender = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.customerGender,jdbcType=CHAR}
+        </foreach>
+      </trim>
+      <trim prefix="identity_card_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.identityCardType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="identity_card_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.identityCardNo,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="custoemr_phone = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.custoemrPhone,jdbcType=CHAR}
+        </foreach>
+      </trim>
+      <trim prefix="customer_email = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.customerEmail,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="balance = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.balance,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="nickname = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.nickname,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="icon = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.icon,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="modified_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_info_id = #{item.customerInfoId,jdbcType=INTEGER} then #{item.modifiedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where customer_info_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.customerInfoId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="customer_info_id" keyProperty="customerInfoId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_info_tb
+    (customer_name, customer_gender, identity_card_type, identity_card_no, custoemr_phone, 
+      customer_email, balance, nickname, icon, modified_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.customerName,jdbcType=VARCHAR}, #{item.customerGender,jdbcType=CHAR}, #{item.identityCardType,jdbcType=VARCHAR}, 
+        #{item.identityCardNo,jdbcType=VARCHAR}, #{item.custoemrPhone,jdbcType=CHAR}, #{item.customerEmail,jdbcType=VARCHAR}, 
+        #{item.balance,jdbcType=DECIMAL}, #{item.nickname,jdbcType=VARCHAR}, #{item.icon,jdbcType=VARCHAR}, 
+        #{item.modifiedTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

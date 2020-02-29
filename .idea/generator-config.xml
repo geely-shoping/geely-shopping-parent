@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistentConfig">
+    <option name="historyConfigList">
+      <map>
+        <entry key="account_dept_tb">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="AccountDeptTbTbDao" />
+              <option name="daoPackage" value="com.geely.dao" />
+              <option name="daoPostfix" value="TbDao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="AccountDeptTb" />
+              <option name="modelPackage" value="generate" />
+              <option name="name" value="account_dept_tb" />
+              <option name="needForUpdate" value="true" />
+              <option name="needToStringHashcodeEquals" value="true" />
+              <option name="offsetLimit" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="account_dept_id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="account_dept_tb" />
+              <option name="useActualColumnNames" value="true" />
+              <option name="useDAOExtendStyle" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="useTableNameAlias" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="generator" />
+            </Config>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
