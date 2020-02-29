@@ -14,4 +14,9 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="geely-dao" options="-extdirs C:\Users\89252\Desktop\geely-shopping-parent\geely-dao/mall-web/web/WEB-INF/lib" />
+    </option>
+  </component>
 </project>
