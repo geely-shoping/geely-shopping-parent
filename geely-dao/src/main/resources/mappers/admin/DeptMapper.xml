@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.geely.dao.admin.DeptMapper" >
+  <resultMap id="BaseResultMap" type="com.geely.entity.admin.Dept" >
+    <constructor >
+      <idArg column="dept_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="dept_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept_describe" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dept_create" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="dept_last" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dept_id, dept_name, dept_describe, dept_create, dept_last
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dept_tb
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dept_tb
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.geely.entity.admin.Dept" >
+    insert into dept_tb (dept_id, dept_name, dept_describe, 
+      dept_create, dept_last)
+    values (#{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR}, #{deptDescribe,jdbcType=VARCHAR}, 
+      #{deptCreate,jdbcType=TIMESTAMP}, #{deptLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.geely.entity.admin.Dept" >
+    insert into dept_tb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="deptDescribe != null" >
+        dept_describe,
+      </if>
+      <if test="deptCreate != null" >
+        dept_create,
+      </if>
+      <if test="deptLast != null" >
+        dept_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDescribe != null" >
+        #{deptDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCreate != null" >
+        #{deptCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptLast != null" >
+        #{deptLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.admin.Dept" >
+    update dept_tb
+    <set >
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDescribe != null" >
+        dept_describe = #{deptDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCreate != null" >
+        dept_create = #{deptCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptLast != null" >
+        dept_last = #{deptLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.admin.Dept" >
+    update dept_tb
+    set dept_name = #{deptName,jdbcType=VARCHAR},
+      dept_describe = #{deptDescribe,jdbcType=VARCHAR},
+      dept_create = #{deptCreate,jdbcType=TIMESTAMP},
+      dept_last = #{deptLast,jdbcType=TIMESTAMP}
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </update>
+</mapper>

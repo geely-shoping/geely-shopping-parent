@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.geely.dao.admin.ProductDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.geely.entity.admin.ProductDetails" >
+    <constructor >
+      <idArg column="details_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="details_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="details_image_one" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="details_image_two" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="details_image_three" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="details_image_four" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="details_image_five" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="details_last" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    details_id, details_name, details_image_one, details_image_two, details_image_three, 
+    details_image_four, details_image_five, details_last
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_details_tb
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_details_tb
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.geely.entity.admin.ProductDetails" >
+    insert into product_details_tb (details_id, details_name, details_image_one, 
+      details_image_two, details_image_three, details_image_four, 
+      details_image_five, details_last)
+    values (#{detailsId,jdbcType=INTEGER}, #{detailsName,jdbcType=VARCHAR}, #{detailsImageOne,jdbcType=VARCHAR}, 
+      #{detailsImageTwo,jdbcType=VARCHAR}, #{detailsImageThree,jdbcType=VARCHAR}, #{detailsImageFour,jdbcType=VARCHAR}, 
+      #{detailsImageFive,jdbcType=VARCHAR}, #{detailsLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.geely.entity.admin.ProductDetails" >
+    insert into product_details_tb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailsId != null" >
+        details_id,
+      </if>
+      <if test="detailsName != null" >
+        details_name,
+      </if>
+      <if test="detailsImageOne != null" >
+        details_image_one,
+      </if>
+      <if test="detailsImageTwo != null" >
+        details_image_two,
+      </if>
+      <if test="detailsImageThree != null" >
+        details_image_three,
+      </if>
+      <if test="detailsImageFour != null" >
+        details_image_four,
+      </if>
+      <if test="detailsImageFive != null" >
+        details_image_five,
+      </if>
+      <if test="detailsLast != null" >
+        details_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailsId != null" >
+        #{detailsId,jdbcType=INTEGER},
+      </if>
+      <if test="detailsName != null" >
+        #{detailsName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageOne != null" >
+        #{detailsImageOne,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageTwo != null" >
+        #{detailsImageTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageThree != null" >
+        #{detailsImageThree,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageFour != null" >
+        #{detailsImageFour,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageFive != null" >
+        #{detailsImageFive,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsLast != null" >
+        #{detailsLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.admin.ProductDetails" >
+    update product_details_tb
+    <set >
+      <if test="detailsName != null" >
+        details_name = #{detailsName,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageOne != null" >
+        details_image_one = #{detailsImageOne,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageTwo != null" >
+        details_image_two = #{detailsImageTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageThree != null" >
+        details_image_three = #{detailsImageThree,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageFour != null" >
+        details_image_four = #{detailsImageFour,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsImageFive != null" >
+        details_image_five = #{detailsImageFive,jdbcType=VARCHAR},
+      </if>
+      <if test="detailsLast != null" >
+        details_last = #{detailsLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.admin.ProductDetails" >
+    update product_details_tb
+    set details_name = #{detailsName,jdbcType=VARCHAR},
+      details_image_one = #{detailsImageOne,jdbcType=VARCHAR},
+      details_image_two = #{detailsImageTwo,jdbcType=VARCHAR},
+      details_image_three = #{detailsImageThree,jdbcType=VARCHAR},
+      details_image_four = #{detailsImageFour,jdbcType=VARCHAR},
+      details_image_five = #{detailsImageFive,jdbcType=VARCHAR},
+      details_last = #{detailsLast,jdbcType=TIMESTAMP}
+    where details_id = #{detailsId,jdbcType=INTEGER}
+  </update>
+</mapper>

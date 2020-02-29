@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.geely.dao.admin.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.geely.entity.admin.Employee" >
+    <constructor >
+      <idArg column="employee_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="employee_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="employee_sex" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="employee_phone" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="employee_card" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="employee_school" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="employee_entry" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="employee_last" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    employee_id, employee_name, employee_sex, employee_phone, employee_card, employee_school, 
+    employee_entry, employee_last
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from employee_tb
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee_tb
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.geely.entity.admin.Employee" >
+    insert into employee_tb (employee_id, employee_name, employee_sex, 
+      employee_phone, employee_card, employee_school, 
+      employee_entry, employee_last)
+    values (#{employeeId,jdbcType=INTEGER}, #{employeeName,jdbcType=VARCHAR}, #{employeeSex,jdbcType=CHAR}, 
+      #{employeePhone,jdbcType=CHAR}, #{employeeCard,jdbcType=CHAR}, #{employeeSchool,jdbcType=VARCHAR}, 
+      #{employeeEntry,jdbcType=TIMESTAMP}, #{employeeLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.geely.entity.admin.Employee" >
+    insert into employee_tb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="employeeId != null" >
+        employee_id,
+      </if>
+      <if test="employeeName != null" >
+        employee_name,
+      </if>
+      <if test="employeeSex != null" >
+        employee_sex,
+      </if>
+      <if test="employeePhone != null" >
+        employee_phone,
+      </if>
+      <if test="employeeCard != null" >
+        employee_card,
+      </if>
+      <if test="employeeSchool != null" >
+        employee_school,
+      </if>
+      <if test="employeeEntry != null" >
+        employee_entry,
+      </if>
+      <if test="employeeLast != null" >
+        employee_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeName != null" >
+        #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeSex != null" >
+        #{employeeSex,jdbcType=CHAR},
+      </if>
+      <if test="employeePhone != null" >
+        #{employeePhone,jdbcType=CHAR},
+      </if>
+      <if test="employeeCard != null" >
+        #{employeeCard,jdbcType=CHAR},
+      </if>
+      <if test="employeeSchool != null" >
+        #{employeeSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeEntry != null" >
+        #{employeeEntry,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeLast != null" >
+        #{employeeLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.admin.Employee" >
+    update employee_tb
+    <set >
+      <if test="employeeName != null" >
+        employee_name = #{employeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeSex != null" >
+        employee_sex = #{employeeSex,jdbcType=CHAR},
+      </if>
+      <if test="employeePhone != null" >
+        employee_phone = #{employeePhone,jdbcType=CHAR},
+      </if>
+      <if test="employeeCard != null" >
+        employee_card = #{employeeCard,jdbcType=CHAR},
+      </if>
+      <if test="employeeSchool != null" >
+        employee_school = #{employeeSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeEntry != null" >
+        employee_entry = #{employeeEntry,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeeLast != null" >
+        employee_last = #{employeeLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.admin.Employee" >
+    update employee_tb
+    set employee_name = #{employeeName,jdbcType=VARCHAR},
+      employee_sex = #{employeeSex,jdbcType=CHAR},
+      employee_phone = #{employeePhone,jdbcType=CHAR},
+      employee_card = #{employeeCard,jdbcType=CHAR},
+      employee_school = #{employeeSchool,jdbcType=VARCHAR},
+      employee_entry = #{employeeEntry,jdbcType=TIMESTAMP},
+      employee_last = #{employeeLast,jdbcType=TIMESTAMP}
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </update>
+</mapper>

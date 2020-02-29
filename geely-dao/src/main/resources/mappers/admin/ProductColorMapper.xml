@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.geely.dao.admin.ProductColorMapper" >
+  <resultMap id="BaseResultMap" type="com.geely.entity.admin.ProductColor" >
+    <constructor >
+      <idArg column="color_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="color_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="color_image" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="color_last" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    color_id, color_name, color_image, color_last
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_color_tb
+    where color_id = #{colorId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_color_tb
+    where color_id = #{colorId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.geely.entity.admin.ProductColor" >
+    insert into product_color_tb (color_id, color_name, color_image, 
+      color_last)
+    values (#{colorId,jdbcType=INTEGER}, #{colorName,jdbcType=VARCHAR}, #{colorImage,jdbcType=VARCHAR}, 
+      #{colorLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.geely.entity.admin.ProductColor" >
+    insert into product_color_tb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="colorId != null" >
+        color_id,
+      </if>
+      <if test="colorName != null" >
+        color_name,
+      </if>
+      <if test="colorImage != null" >
+        color_image,
+      </if>
+      <if test="colorLast != null" >
+        color_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="colorId != null" >
+        #{colorId,jdbcType=INTEGER},
+      </if>
+      <if test="colorName != null" >
+        #{colorName,jdbcType=VARCHAR},
+      </if>
+      <if test="colorImage != null" >
+        #{colorImage,jdbcType=VARCHAR},
+      </if>
+      <if test="colorLast != null" >
+        #{colorLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.admin.ProductColor" >
+    update product_color_tb
+    <set >
+      <if test="colorName != null" >
+        color_name = #{colorName,jdbcType=VARCHAR},
+      </if>
+      <if test="colorImage != null" >
+        color_image = #{colorImage,jdbcType=VARCHAR},
+      </if>
+      <if test="colorLast != null" >
+        color_last = #{colorLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where color_id = #{colorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.admin.ProductColor" >
+    update product_color_tb
+    set color_name = #{colorName,jdbcType=VARCHAR},
+      color_image = #{colorImage,jdbcType=VARCHAR},
+      color_last = #{colorLast,jdbcType=TIMESTAMP}
+    where color_id = #{colorId,jdbcType=INTEGER}
+  </update>
+</mapper>
