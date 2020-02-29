@@ -9,9 +9,13 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
+/**
+ * 收藏表
+ */
 public class Collect {
 
-    private Integer collectId;
-    private Integer collectProduct;
-    private Date modifiedTime;
+    private Integer collectId; //收藏表编号
+    private Integer collectProduct; //商品编号
+    private Date modifiedTime; //最后修改时间
 }

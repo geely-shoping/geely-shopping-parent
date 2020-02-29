@@ -9,11 +9,15 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
+/**
+ * 评论表
+ */
 public class Comment {
 
-    private Integer commentId;
-    private String commentContent;
-    private Integer commentProduct;
-    private Date modifiedTime;
+    private Integer commentId; //评论表编号
+    private String commentContent; //评论内容
+    private Integer commentProduct; //商品编号
+    private Date modifiedTime; //最后修改时间
 
 }

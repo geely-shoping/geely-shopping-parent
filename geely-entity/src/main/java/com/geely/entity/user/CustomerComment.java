@@ -7,10 +7,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
+/**
+ * 用户评论关联
+ */
 public class CustomerComment {
 
-    private Integer CustomerCommentId;
-    private Integer customerId;
-    private Integer commentId;
+    private Integer CustomerCommentId; //用户评论关联表编号
+    private Integer customerId; //用户编号
+    private Integer commentId; //评论编号
 
 }

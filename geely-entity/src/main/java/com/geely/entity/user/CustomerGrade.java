@@ -7,10 +7,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
+/**
+ * 用户等级关联表
+ */
 public class CustomerGrade{
 
-   private Integer customerGradeId;
-   private Integer customerId;
-   private Integer gradeId;
+   private Integer customerGradeId; //用户等级关联表编号
+   private Integer customerId; //用户编号
+   private Integer gradeId; //等级编号
 
 }

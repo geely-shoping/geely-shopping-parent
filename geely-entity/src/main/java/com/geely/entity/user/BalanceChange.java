@@ -10,12 +10,15 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
+/**
+ * 余额变动表
+ */
 public class BalanceChange {
 
-   private Integer balanceChangeId;
-   private String source;
-   private Integer sourceDetail;
-   private Date createTime;
-   private BigDecimal amount;
-
+   private Integer balanceChangeId; //余额变动编号
+   private String source; // 记录来源
+   private Integer sourceDetail; //相关单据id
+   private Date createTime;  //记录生成时间
+   private BigDecimal amount; //变动金额
 }
