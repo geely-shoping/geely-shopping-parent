@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.DeptTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.DeptTb">
+    <!--@mbg.generated-->
+    <id column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="dept_describe" jdbcType="VARCHAR" property="deptDescribe" />
+    <result column="dept_create" jdbcType="TIMESTAMP" property="deptCreate" />
+    <result column="dept_last" jdbcType="TIMESTAMP" property="deptLast" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    dept_id, dept_name, dept_describe, dept_create, dept_last
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from dept_tb
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from dept_tb
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="dept_id" keyProperty="deptId" parameterType="com.geely.entity.DeptTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dept_tb (dept_name, dept_describe, dept_create, 
+      dept_last)
+    values (#{deptName,jdbcType=VARCHAR}, #{deptDescribe,jdbcType=VARCHAR}, #{deptCreate,jdbcType=TIMESTAMP}, 
+      #{deptLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="dept_id" keyProperty="deptId" parameterType="com.geely.entity.DeptTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dept_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deptName != null">
+        dept_name,
+      </if>
+      <if test="deptDescribe != null">
+        dept_describe,
+      </if>
+      <if test="deptCreate != null">
+        dept_create,
+      </if>
+      <if test="deptLast != null">
+        dept_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDescribe != null">
+        #{deptDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCreate != null">
+        #{deptCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptLast != null">
+        #{deptLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.DeptTb">
+    <!--@mbg.generated-->
+    update dept_tb
+    <set>
+      <if test="deptName != null">
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDescribe != null">
+        dept_describe = #{deptDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCreate != null">
+        dept_create = #{deptCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptLast != null">
+        dept_last = #{deptLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.DeptTb">
+    <!--@mbg.generated-->
+    update dept_tb
+    set dept_name = #{deptName,jdbcType=VARCHAR},
+      dept_describe = #{deptDescribe,jdbcType=VARCHAR},
+      dept_create = #{deptCreate,jdbcType=TIMESTAMP},
+      dept_last = #{deptLast,jdbcType=TIMESTAMP}
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update dept_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="dept_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when dept_id = #{item.deptId,jdbcType=INTEGER} then #{item.deptName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="dept_describe = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when dept_id = #{item.deptId,jdbcType=INTEGER} then #{item.deptDescribe,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="dept_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when dept_id = #{item.deptId,jdbcType=INTEGER} then #{item.deptCreate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="dept_last = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when dept_id = #{item.deptId,jdbcType=INTEGER} then #{item.deptLast,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where dept_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.deptId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="dept_id" keyProperty="deptId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dept_tb
+    (dept_name, dept_describe, dept_create, dept_last)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.deptName,jdbcType=VARCHAR}, #{item.deptDescribe,jdbcType=VARCHAR}, #{item.deptCreate,jdbcType=TIMESTAMP}, 
+        #{item.deptLast,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+
+  <select id="listDeptTb" resultMap="BaseResultMap">
+    select dept_id, dept_name, dept_describe, dept_create, dept_last from dept_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from dept_tb
+    where dept_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+</mapper>

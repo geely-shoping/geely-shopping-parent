@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.CustomerFootpringTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.CustomerFootpringTb">
+    <!--@mbg.generated-->
+    <id column="customer_footprint_id" jdbcType="INTEGER" property="customerFootprintId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="footpring_id" jdbcType="INTEGER" property="footpringId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    customer_footprint_id, customer_id, footpring_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from customer_footpring_tb
+    where customer_footprint_id = #{customerFootprintId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from customer_footpring_tb
+    where customer_footprint_id = #{customerFootprintId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="customer_footprint_id" keyProperty="customerFootprintId" parameterType="com.geely.entity.CustomerFootpringTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_footpring_tb (customer_id, footpring_id)
+    values (#{customerId,jdbcType=INTEGER}, #{footpringId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="customer_footprint_id" keyProperty="customerFootprintId" parameterType="com.geely.entity.CustomerFootpringTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_footpring_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="footpringId != null">
+        footpring_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="footpringId != null">
+        #{footpringId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.CustomerFootpringTb">
+    <!--@mbg.generated-->
+    update customer_footpring_tb
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="footpringId != null">
+        footpring_id = #{footpringId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where customer_footprint_id = #{customerFootprintId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.CustomerFootpringTb">
+    <!--@mbg.generated-->
+    update customer_footpring_tb
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      footpring_id = #{footpringId,jdbcType=INTEGER}
+    where customer_footprint_id = #{customerFootprintId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update customer_footpring_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="customer_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_footprint_id = #{item.customerFootprintId,jdbcType=INTEGER} then #{item.customerId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="footpring_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_footprint_id = #{item.customerFootprintId,jdbcType=INTEGER} then #{item.footpringId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where customer_footprint_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.customerFootprintId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="customer_footprint_id" keyProperty="customerFootprintId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_footpring_tb
+    (customer_id, footpring_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.customerId,jdbcType=INTEGER}, #{item.footpringId,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>
