@@ -21,4 +21,9 @@ public interface DeptTbService{
 
     int batchInsert(List<DeptTb> list);
 
+    //分页查询
+    List<DeptTb> listDeptTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> deptIds);
 }

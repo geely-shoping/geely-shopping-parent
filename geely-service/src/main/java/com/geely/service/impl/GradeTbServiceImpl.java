@@ -52,4 +52,14 @@ public class GradeTbServiceImpl implements GradeTbService{
         return gradeTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<GradeTb> listGradeTbByPage(int pageNum, int pageSize) {
+        return gradeTbMapper.listGradeTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> customerGradeIds) {
+        return gradeTbMapper.batchDelete(customerGradeIds);
+    }
+
 }

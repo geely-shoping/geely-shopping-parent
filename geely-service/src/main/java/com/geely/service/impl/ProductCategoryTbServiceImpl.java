@@ -52,4 +52,14 @@ public class ProductCategoryTbServiceImpl implements ProductCategoryTbService{
         return productCategoryTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<ProductCategoryTb> listProductCategoryTbByPage(int pageNum, int pageSize) {
+        return productCategoryTbMapper.listProductCategoryTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> categoryIds) {
+        return productCategoryTbMapper.batchDelete(categoryIds);
+    }
+
 }

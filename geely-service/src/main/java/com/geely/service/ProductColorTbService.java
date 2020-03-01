@@ -21,4 +21,9 @@ public interface ProductColorTbService{
 
     int batchInsert(List<ProductColorTb> list);
 
+    //分页查询
+    List<ProductColorTb> listProductColorTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> colorIds);
 }

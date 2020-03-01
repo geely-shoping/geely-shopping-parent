@@ -52,4 +52,14 @@ public class DeptTbServiceImpl implements DeptTbService{
         return deptTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<DeptTb> listDeptTbByPage(int pageNum, int pageSize) {
+        return deptTbMapper.listDeptTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> deptIds) {
+        return deptTbMapper.batchDelete(deptIds);
+    }
+
 }

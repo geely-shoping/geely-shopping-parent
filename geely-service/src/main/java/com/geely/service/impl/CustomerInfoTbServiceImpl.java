@@ -52,4 +52,14 @@ public class CustomerInfoTbServiceImpl implements CustomerInfoTbService{
         return customerInfoTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<CustomerInfoTb> listCustomerInfoTbByPage(int pageNum, int pageSize) {
+        return customerInfoTbMapper.listCustomerInfoTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> customerInfoIds) {
+        return customerInfoTbMapper.batchDelete(customerInfoIds);
+    }
+
 }

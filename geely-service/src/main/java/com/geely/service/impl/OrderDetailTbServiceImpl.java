@@ -52,4 +52,14 @@ public class OrderDetailTbServiceImpl implements OrderDetailTbService{
         return orderDetailTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<OrderDetailTb> listOrderDetailTbByPage(int pageNum, int pageSize) {
+        return orderDetailTbMapper.listOrderDetailTb(pageNum,pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> orderDetailIds) {
+        return orderDetailTbMapper.batchDelete(orderDetailIds);
+    }
+
 }

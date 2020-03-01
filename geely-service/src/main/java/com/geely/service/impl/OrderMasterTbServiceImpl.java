@@ -52,4 +52,14 @@ public class OrderMasterTbServiceImpl implements OrderMasterTbService{
         return orderMasterTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<OrderMasterTb> listOrderMasterTbByPage(int pageNum, int pageSize) {
+        return orderMasterTbMapper.listOrderMasterTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> orderIds) {
+        return orderMasterTbMapper.batchDelete(orderIds);
+    }
+
 }

@@ -21,4 +21,9 @@ public interface CommentTbService{
 
     int batchInsert(List<CommentTb> list);
 
+    //分页查询
+    List<CommentTb> listCommentTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> commentIds);
 }

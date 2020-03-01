@@ -52,4 +52,14 @@ public class ShippingAddrTbServiceImpl implements ShippingAddrTbService{
         return shippingAddrTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<ShippingAddrTb> listShippingAddrTbByPage(int pageNum, int pageSize) {
+        return shippingAddrTbMapper.listShippingAddrTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> customerAddrIds) {
+        return shippingAddrTbMapper.batchDelete(customerAddrIds);
+    }
+
 }

@@ -52,4 +52,14 @@ public class CustomerAccountTbServiceImpl implements CustomerAccountTbService{
         return customerAccountTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<CustomerAccountTb> listCustomerAccountTbByPage(int pageNum, int pageSize) {
+        return customerAccountTbMapper.listCustomerAccountTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> customerIds) {
+        return customerAccountTbMapper.batchDelete(customerIds);
+    }
+
 }

@@ -52,4 +52,14 @@ public class CouponTbServiceImpl implements CouponTbService{
         return couponTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<CouponTb> listCouponTbByPage(int pageNum, int pageSize) {
+        return couponTbMapper.listCouponTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> couponIds) {
+        return couponTbMapper.batchDelete(couponIds);
+    }
+
 }

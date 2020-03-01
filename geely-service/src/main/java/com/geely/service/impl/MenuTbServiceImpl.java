@@ -52,4 +52,14 @@ public class MenuTbServiceImpl implements MenuTbService{
         return menuTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<MenuTb> listMenuTbByPage(int pageNum, int pageSize) {
+        return menuTbMapper.listMenuTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> menuIds) {
+        return menuTbMapper.batchDelete(menuIds);
+    }
+
 }

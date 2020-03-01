@@ -52,4 +52,14 @@ public class ProductColorTbServiceImpl implements ProductColorTbService{
         return productColorTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<ProductColorTb> listProductColorTbByPage(int pageNum, int pageSize) {
+        return productColorTbMapper.listProductColorTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> colorIds) {
+        return productColorTbMapper.batchDelete(colorIds);
+    }
+
 }

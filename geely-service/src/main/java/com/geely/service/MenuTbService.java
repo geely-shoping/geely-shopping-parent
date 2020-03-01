@@ -21,4 +21,9 @@ public interface MenuTbService{
 
     int batchInsert(List<MenuTb> list);
 
+    //分页查询
+    List<MenuTb> listMenuTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> menuIds);
 }

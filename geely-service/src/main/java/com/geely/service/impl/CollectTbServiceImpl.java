@@ -52,4 +52,14 @@ public class CollectTbServiceImpl implements CollectTbService{
         return collectTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<CollectTb> listCollectTbByPage(int pageNum, int pageSize) {
+        return collectTbMapper.listByCollectTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> collectIds) {
+        return collectTbMapper.batchDelete(collectIds);
+    }
+
 }

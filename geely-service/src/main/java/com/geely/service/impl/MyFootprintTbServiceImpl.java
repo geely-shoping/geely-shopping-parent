@@ -52,4 +52,14 @@ public class MyFootprintTbServiceImpl implements MyFootprintTbService{
         return myFootprintTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<MyFootprintTb> listMyFootprintTbByPage(int pageNum, int pageSize) {
+        return myFootprintTbMapper.listMyFootprintTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> footprintIds) {
+        return myFootprintTbMapper.batchDelete(footprintIds);
+    }
+
 }

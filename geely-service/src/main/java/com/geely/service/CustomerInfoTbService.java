@@ -21,4 +21,9 @@ public interface CustomerInfoTbService{
 
     int batchInsert(List<CustomerInfoTb> list);
 
+    //分页查询
+    List<CustomerInfoTb> listCustomerInfoTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> customerInfoIds);
 }

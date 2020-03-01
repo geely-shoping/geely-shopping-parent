@@ -21,4 +21,9 @@ public interface GradeTbService{
 
     int batchInsert(List<GradeTb> list);
 
+    //分页查询
+    List<GradeTb> listGradeTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> customerGradeIds);
 }

@@ -52,4 +52,14 @@ public class CommentTbServiceImpl implements CommentTbService{
         return commentTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<CommentTb> listCommentTbByPage(int pageNum, int pageSize) {
+        return commentTbMapper.listCommentTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> commentIds) {
+        return commentTbMapper.batchDelete(commentIds);
+    }
+
 }

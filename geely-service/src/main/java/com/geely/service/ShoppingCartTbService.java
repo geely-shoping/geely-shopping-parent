@@ -21,4 +21,9 @@ public interface ShoppingCartTbService{
 
     int batchInsert(List<ShoppingCartTb> list);
 
+    //分页查询
+    List<ShoppingCartTb> listShoppingCartTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> shoppingCartIds);
 }

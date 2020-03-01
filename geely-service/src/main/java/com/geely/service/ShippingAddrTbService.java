@@ -21,4 +21,9 @@ public interface ShippingAddrTbService{
 
     int batchInsert(List<ShippingAddrTb> list);
 
+    //分页查询
+    List<ShippingAddrTb> listShippingAddrTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> customerAddrIds);
 }

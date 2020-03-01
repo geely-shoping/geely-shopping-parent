@@ -21,4 +21,9 @@ public interface OrderDetailTbService{
 
     int batchInsert(List<OrderDetailTb> list);
 
+    //分页查询
+    List<OrderDetailTb> listOrderDetailTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> orderDetailIds);
 }

@@ -21,4 +21,10 @@ public interface CollectTbService{
 
     int batchInsert(List<CollectTb> list);
 
+    //分页查询
+    List<CollectTb> listCollectTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> collectIds);
+
 }

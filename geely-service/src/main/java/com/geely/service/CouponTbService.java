@@ -21,4 +21,9 @@ public interface CouponTbService{
 
     int batchInsert(List<CouponTb> list);
 
+    //分页查询
+    List<CouponTb> listCouponTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> couponIds);
 }

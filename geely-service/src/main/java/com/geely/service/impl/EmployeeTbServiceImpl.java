@@ -52,4 +52,14 @@ public class EmployeeTbServiceImpl implements EmployeeTbService{
         return employeeTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<EmployeeTb> listEmployeeTbByPage(int pageNum, int pageSize) {
+        return employeeTbMapper.listEmployeeTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> employeeIds) {
+        return employeeTbMapper.batchDelete(employeeIds);
+    }
+
 }

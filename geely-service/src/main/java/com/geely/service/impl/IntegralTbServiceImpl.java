@@ -52,4 +52,14 @@ public class IntegralTbServiceImpl implements IntegralTbService{
         return integralTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<IntegralTb> listIntegralTbByPage(int pageNum, int pageSize) {
+        return integralTbMapper.listIntegralTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> customerIntegralIds) {
+        return integralTbMapper.batchDelete(customerIntegralIds);
+    }
+
 }

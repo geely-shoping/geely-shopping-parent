@@ -21,4 +21,9 @@ public interface EmployeeTbService{
 
     int batchInsert(List<EmployeeTb> list);
 
+    //分页查询
+    List<EmployeeTb> listEmployeeTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> employeeIds);
 }

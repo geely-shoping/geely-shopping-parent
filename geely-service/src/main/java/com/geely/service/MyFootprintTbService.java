@@ -21,4 +21,9 @@ public interface MyFootprintTbService{
 
     int batchInsert(List<MyFootprintTb> list);
 
+    //分页查询
+    List<MyFootprintTb> listMyFootprintTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> footprintIds);
 }

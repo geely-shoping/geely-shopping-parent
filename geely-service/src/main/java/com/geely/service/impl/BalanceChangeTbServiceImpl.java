@@ -52,4 +52,14 @@ public class BalanceChangeTbServiceImpl implements BalanceChangeTbService{
         return balanceChangeTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<BalanceChangeTb> listBalanceChangeTbByPage(int pageNum, int pageSize) {
+        return balanceChangeTbMapper.listBalanceChangeTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> balanceChangeIds) {
+        return balanceChangeTbMapper.batchDelete(balanceChangeIds);
+    }
+
 }

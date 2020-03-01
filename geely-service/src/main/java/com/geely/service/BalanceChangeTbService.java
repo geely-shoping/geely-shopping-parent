@@ -21,4 +21,10 @@ public interface BalanceChangeTbService{
 
     int batchInsert(List<BalanceChangeTb> list);
 
+    //分页查询
+    List<BalanceChangeTb> listBalanceChangeTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> balanceChangeIds);
+
 }

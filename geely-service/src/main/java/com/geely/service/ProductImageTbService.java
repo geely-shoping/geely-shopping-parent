@@ -21,4 +21,9 @@ public interface ProductImageTbService{
 
     int batchInsert(List<ProductImageTb> list);
 
+    //分页查询
+    List<ProductImageTb> listProductImageTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> imageIds);
 }

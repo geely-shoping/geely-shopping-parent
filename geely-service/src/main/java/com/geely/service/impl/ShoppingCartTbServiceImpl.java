@@ -52,4 +52,14 @@ public class ShoppingCartTbServiceImpl implements ShoppingCartTbService{
         return shoppingCartTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<ShoppingCartTb> listShoppingCartTbByPage(int pageNum, int pageSize) {
+        return shoppingCartTbMapper.listShoppingCartTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> shoppingCartIds) {
+        return shoppingCartTbMapper.batchDelete(shoppingCartIds);
+    }
+
 }

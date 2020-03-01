@@ -52,4 +52,14 @@ public class ProductTbServiceImpl implements ProductTbService{
         return productTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<ProductTb> listProductTbByPage(int pageNum, int pageSize) {
+        return productTbMapper.listProductTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> productIds) {
+        return productTbMapper.batchDelete(productIds);
+    }
+
 }

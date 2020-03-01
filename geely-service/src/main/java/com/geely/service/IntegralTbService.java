@@ -21,4 +21,10 @@ public interface IntegralTbService{
 
     int batchInsert(List<IntegralTb> list);
 
+    //分页查询
+    List<IntegralTb> listIntegralTbByPage(int pageNum,int pageSize);
+
+    //批量删除
+    int batchDelete(List<Integer> customerIntegralIds);
+
 }

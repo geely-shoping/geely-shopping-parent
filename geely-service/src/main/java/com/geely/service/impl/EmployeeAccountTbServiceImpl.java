@@ -52,4 +52,14 @@ public class EmployeeAccountTbServiceImpl implements EmployeeAccountTbService{
         return employeeAccountTbMapper.batchInsert(list);
     }
 
+    @Override
+    public List<EmployeeAccountTb> listEmployeeAccountTbByPage(int pageNum, int pageSize) {
+        return employeeAccountTbMapper.listEmployeeAccountTb(pageNum, pageSize);
+    }
+
+    @Override
+    public int batchDelete(List<Integer> accountIds) {
+        return employeeAccountTbMapper.batchDelete(accountIds);
+    }
+
 }
