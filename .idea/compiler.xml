@@ -16,7 +16,11 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="geely-dao" options="-extdirs C:\Users\89252\Desktop\geely-shopping-parent\geely-dao/mall-web/web/WEB-INF/lib" />
+      <module name="geely-controller" options="-parameters" />
+      <module name="geely-dao" options="-parameters" />
+      <module name="geely-entity" options="-parameters" />
+      <module name="geely-service" options="-parameters" />
+      <module name="geely-util" options="-parameters" />
     </option>
   </component>
 </project>

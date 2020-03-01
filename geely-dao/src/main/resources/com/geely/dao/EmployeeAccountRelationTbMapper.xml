@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.EmployeeAccountRelationTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.EmployeeAccountRelationTb">
+    <!--@mbg.generated-->
+    <id column="emp_account_id" jdbcType="INTEGER" property="empAccountId" />
+    <result column="employee_id" jdbcType="INTEGER" property="employeeId" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    emp_account_id, employee_id, account_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from employee_account_relation_tb
+    where emp_account_id = #{empAccountId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from employee_account_relation_tb
+    where emp_account_id = #{empAccountId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="emp_account_id" keyProperty="empAccountId" parameterType="com.geely.entity.EmployeeAccountRelationTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_account_relation_tb (employee_id, account_id)
+    values (#{employeeId,jdbcType=INTEGER}, #{accountId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="emp_account_id" keyProperty="empAccountId" parameterType="com.geely.entity.EmployeeAccountRelationTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_account_relation_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="employeeId != null">
+        employee_id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="employeeId != null">
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.EmployeeAccountRelationTb">
+    <!--@mbg.generated-->
+    update employee_account_relation_tb
+    <set>
+      <if test="employeeId != null">
+        employee_id = #{employeeId,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where emp_account_id = #{empAccountId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.EmployeeAccountRelationTb">
+    <!--@mbg.generated-->
+    update employee_account_relation_tb
+    set employee_id = #{employeeId,jdbcType=INTEGER},
+      account_id = #{accountId,jdbcType=INTEGER}
+    where emp_account_id = #{empAccountId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update employee_account_relation_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="employee_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when emp_account_id = #{item.empAccountId,jdbcType=INTEGER} then #{item.employeeId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="account_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when emp_account_id = #{item.empAccountId,jdbcType=INTEGER} then #{item.accountId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where emp_account_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.empAccountId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="emp_account_id" keyProperty="empAccountId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_account_relation_tb
+    (employee_id, account_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.employeeId,jdbcType=INTEGER}, #{item.accountId,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>

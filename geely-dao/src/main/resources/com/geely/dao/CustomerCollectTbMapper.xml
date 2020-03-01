@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.CustomerCollectTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.CustomerCollectTb">
+    <!--@mbg.generated-->
+    <id column="customer_collect_id" jdbcType="INTEGER" property="customerCollectId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="collect_id" jdbcType="INTEGER" property="collectId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    customer_collect_id, customer_id, collect_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from customer_collect_tb
+    where customer_collect_id = #{customerCollectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from customer_collect_tb
+    where customer_collect_id = #{customerCollectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="customer_collect_id" keyProperty="customerCollectId" parameterType="com.geely.entity.CustomerCollectTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_collect_tb (customer_id, collect_id)
+    values (#{customerId,jdbcType=INTEGER}, #{collectId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="customer_collect_id" keyProperty="customerCollectId" parameterType="com.geely.entity.CustomerCollectTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_collect_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="collectId != null">
+        collect_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="collectId != null">
+        #{collectId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.CustomerCollectTb">
+    <!--@mbg.generated-->
+    update customer_collect_tb
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="collectId != null">
+        collect_id = #{collectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where customer_collect_id = #{customerCollectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.CustomerCollectTb">
+    <!--@mbg.generated-->
+    update customer_collect_tb
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      collect_id = #{collectId,jdbcType=INTEGER}
+    where customer_collect_id = #{customerCollectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update customer_collect_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="customer_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_collect_id = #{item.customerCollectId,jdbcType=INTEGER} then #{item.customerId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="collect_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_collect_id = #{item.customerCollectId,jdbcType=INTEGER} then #{item.collectId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where customer_collect_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.customerCollectId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="customer_collect_id" keyProperty="customerCollectId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into customer_collect_tb
+    (customer_id, collect_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.customerId,jdbcType=INTEGER}, #{item.collectId,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.ProductColorTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.ProductColorTb">
+    <!--@mbg.generated-->
+    <id column="color_id" jdbcType="INTEGER" property="colorId" />
+    <result column="color_name" jdbcType="VARCHAR" property="colorName" />
+    <result column="color_image" jdbcType="VARCHAR" property="colorImage" />
+    <result column="color_last" jdbcType="TIMESTAMP" property="colorLast" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    color_id, color_name, color_image, color_last
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from product_color_tb
+    where color_id = #{colorId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from product_color_tb
+    where color_id = #{colorId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="color_id" keyProperty="colorId" parameterType="com.geely.entity.ProductColorTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_color_tb (color_name, color_image, color_last
+      )
+    values (#{colorName,jdbcType=VARCHAR}, #{colorImage,jdbcType=VARCHAR}, #{colorLast,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="color_id" keyProperty="colorId" parameterType="com.geely.entity.ProductColorTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_color_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="colorName != null">
+        color_name,
+      </if>
+      <if test="colorImage != null">
+        color_image,
+      </if>
+      <if test="colorLast != null">
+        color_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="colorName != null">
+        #{colorName,jdbcType=VARCHAR},
+      </if>
+      <if test="colorImage != null">
+        #{colorImage,jdbcType=VARCHAR},
+      </if>
+      <if test="colorLast != null">
+        #{colorLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.ProductColorTb">
+    <!--@mbg.generated-->
+    update product_color_tb
+    <set>
+      <if test="colorName != null">
+        color_name = #{colorName,jdbcType=VARCHAR},
+      </if>
+      <if test="colorImage != null">
+        color_image = #{colorImage,jdbcType=VARCHAR},
+      </if>
+      <if test="colorLast != null">
+        color_last = #{colorLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where color_id = #{colorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.ProductColorTb">
+    <!--@mbg.generated-->
+    update product_color_tb
+    set color_name = #{colorName,jdbcType=VARCHAR},
+      color_image = #{colorImage,jdbcType=VARCHAR},
+      color_last = #{colorLast,jdbcType=TIMESTAMP}
+    where color_id = #{colorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_color_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="color_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when color_id = #{item.colorId,jdbcType=INTEGER} then #{item.colorName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="color_image = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when color_id = #{item.colorId,jdbcType=INTEGER} then #{item.colorImage,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="color_last = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when color_id = #{item.colorId,jdbcType=INTEGER} then #{item.colorLast,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where color_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.colorId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="color_id" keyProperty="colorId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_color_tb
+    (color_name, color_image, color_last)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.colorName,jdbcType=VARCHAR}, #{item.colorImage,jdbcType=VARCHAR}, #{item.colorLast,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+
+  <select id="listProductColorTb" resultMap="BaseResultMap">
+    select color_id, color_name, color_image, color_last from product_color_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from product_color_tb
+    where color_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+</mapper>

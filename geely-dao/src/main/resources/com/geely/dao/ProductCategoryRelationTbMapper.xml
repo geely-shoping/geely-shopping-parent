@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.ProductCategoryRelationTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.ProductCategoryRelationTb">
+    <!--@mbg.generated-->
+    <id column="pro_category_id" jdbcType="INTEGER" property="proCategoryId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    pro_category_id, product_id, category_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from product_category_relation_tb
+    where pro_category_id = #{proCategoryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from product_category_relation_tb
+    where pro_category_id = #{proCategoryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="pro_category_id" keyProperty="proCategoryId" parameterType="com.geely.entity.ProductCategoryRelationTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_category_relation_tb (product_id, category_id)
+    values (#{productId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="pro_category_id" keyProperty="proCategoryId" parameterType="com.geely.entity.ProductCategoryRelationTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_category_relation_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.ProductCategoryRelationTb">
+    <!--@mbg.generated-->
+    update product_category_relation_tb
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pro_category_id = #{proCategoryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.ProductCategoryRelationTb">
+    <!--@mbg.generated-->
+    update product_category_relation_tb
+    set product_id = #{productId,jdbcType=INTEGER},
+      category_id = #{categoryId,jdbcType=INTEGER}
+    where pro_category_id = #{proCategoryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_category_relation_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="product_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when pro_category_id = #{item.proCategoryId,jdbcType=INTEGER} then #{item.productId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="category_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when pro_category_id = #{item.proCategoryId,jdbcType=INTEGER} then #{item.categoryId,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where pro_category_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.proCategoryId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="pro_category_id" keyProperty="proCategoryId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_category_relation_tb
+    (product_id, category_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.productId,jdbcType=INTEGER}, #{item.categoryId,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>

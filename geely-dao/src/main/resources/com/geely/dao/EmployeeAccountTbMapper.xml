@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.EmployeeAccountTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.EmployeeAccountTb">
+    <!--@mbg.generated-->
+    <id column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="account_password" jdbcType="VARCHAR" property="accountPassword" />
+    <result column="account_create" jdbcType="TIMESTAMP" property="accountCreate" />
+    <result column="account_last" jdbcType="TIMESTAMP" property="accountLast" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    account_id, account_name, account_password, account_create, account_last
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from employee_account_tb
+    where account_id = #{accountId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from employee_account_tb
+    where account_id = #{accountId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="account_id" keyProperty="accountId" parameterType="com.geely.entity.EmployeeAccountTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_account_tb (account_name, account_password, account_create, 
+      account_last)
+    values (#{accountName,jdbcType=VARCHAR}, #{accountPassword,jdbcType=VARCHAR}, #{accountCreate,jdbcType=TIMESTAMP}, 
+      #{accountLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="account_id" keyProperty="accountId" parameterType="com.geely.entity.EmployeeAccountTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_account_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountName != null">
+        account_name,
+      </if>
+      <if test="accountPassword != null">
+        account_password,
+      </if>
+      <if test="accountCreate != null">
+        account_create,
+      </if>
+      <if test="accountLast != null">
+        account_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountName != null">
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountPassword != null">
+        #{accountPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCreate != null">
+        #{accountCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountLast != null">
+        #{accountLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.EmployeeAccountTb">
+    <!--@mbg.generated-->
+    update employee_account_tb
+    <set>
+      <if test="accountName != null">
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountPassword != null">
+        account_password = #{accountPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCreate != null">
+        account_create = #{accountCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountLast != null">
+        account_last = #{accountLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where account_id = #{accountId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.EmployeeAccountTb">
+    <!--@mbg.generated-->
+    update employee_account_tb
+    set account_name = #{accountName,jdbcType=VARCHAR},
+      account_password = #{accountPassword,jdbcType=VARCHAR},
+      account_create = #{accountCreate,jdbcType=TIMESTAMP},
+      account_last = #{accountLast,jdbcType=TIMESTAMP}
+    where account_id = #{accountId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update employee_account_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="account_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when account_id = #{item.accountId,jdbcType=INTEGER} then #{item.accountName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="account_password = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when account_id = #{item.accountId,jdbcType=INTEGER} then #{item.accountPassword,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="account_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when account_id = #{item.accountId,jdbcType=INTEGER} then #{item.accountCreate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="account_last = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when account_id = #{item.accountId,jdbcType=INTEGER} then #{item.accountLast,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where account_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.accountId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="account_id" keyProperty="accountId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into employee_account_tb
+    (account_name, account_password, account_create, account_last)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.accountName,jdbcType=VARCHAR}, #{item.accountPassword,jdbcType=VARCHAR}, 
+        #{item.accountCreate,jdbcType=TIMESTAMP}, #{item.accountLast,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+
+  <select id="listEmployeeAccountTb" resultMap="BaseResultMap">
+    select account_id, account_name, account_password, account_create, account_last from employee_account_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from employee_account_tb
+    where account_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+</mapper>

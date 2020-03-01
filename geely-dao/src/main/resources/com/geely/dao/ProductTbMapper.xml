@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.ProductTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.ProductTb">
+    <!--@mbg.generated-->
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+    <result column="product_image" jdbcType="VARCHAR" property="productImage" />
+    <result column="product_describe" jdbcType="VARCHAR" property="productDescribe" />
+    <result column="product_status" jdbcType="CHAR" property="productStatus" />
+    <result column="product_create" jdbcType="TIMESTAMP" property="productCreate" />
+    <result column="product_last" jdbcType="TIMESTAMP" property="productLast" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    product_id, product_name, product_price, product_image, product_describe, product_status, 
+    product_create, product_last
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from product_tb
+    where product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from product_tb
+    where product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="product_id" keyProperty="productId" parameterType="com.geely.entity.ProductTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_tb (product_name, product_price, product_image, 
+      product_describe, product_status, product_create, 
+      product_last)
+    values (#{productName,jdbcType=VARCHAR}, #{productPrice,jdbcType=DECIMAL}, #{productImage,jdbcType=VARCHAR}, 
+      #{productDescribe,jdbcType=VARCHAR}, #{productStatus,jdbcType=CHAR}, #{productCreate,jdbcType=TIMESTAMP}, 
+      #{productLast,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="product_id" keyProperty="productId" parameterType="com.geely.entity.ProductTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="productImage != null">
+        product_image,
+      </if>
+      <if test="productDescribe != null">
+        product_describe,
+      </if>
+      <if test="productStatus != null">
+        product_status,
+      </if>
+      <if test="productCreate != null">
+        product_create,
+      </if>
+      <if test="productLast != null">
+        product_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productImage != null">
+        #{productImage,jdbcType=VARCHAR},
+      </if>
+      <if test="productDescribe != null">
+        #{productDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="productStatus != null">
+        #{productStatus,jdbcType=CHAR},
+      </if>
+      <if test="productCreate != null">
+        #{productCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productLast != null">
+        #{productLast,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.ProductTb">
+    <!--@mbg.generated-->
+    update product_tb
+    <set>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="productImage != null">
+        product_image = #{productImage,jdbcType=VARCHAR},
+      </if>
+      <if test="productDescribe != null">
+        product_describe = #{productDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="productStatus != null">
+        product_status = #{productStatus,jdbcType=CHAR},
+      </if>
+      <if test="productCreate != null">
+        product_create = #{productCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productLast != null">
+        product_last = #{productLast,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.ProductTb">
+    <!--@mbg.generated-->
+    update product_tb
+    set product_name = #{productName,jdbcType=VARCHAR},
+      product_price = #{productPrice,jdbcType=DECIMAL},
+      product_image = #{productImage,jdbcType=VARCHAR},
+      product_describe = #{productDescribe,jdbcType=VARCHAR},
+      product_status = #{productStatus,jdbcType=CHAR},
+      product_create = #{productCreate,jdbcType=TIMESTAMP},
+      product_last = #{productLast,jdbcType=TIMESTAMP}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update product_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="product_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when product_id = #{item.productId,jdbcType=INTEGER} then #{item.productName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="product_price = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when product_id = #{item.productId,jdbcType=INTEGER} then #{item.productPrice,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="product_image = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when product_id = #{item.productId,jdbcType=INTEGER} then #{item.productImage,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="product_describe = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when product_id = #{item.productId,jdbcType=INTEGER} then #{item.productDescribe,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="product_status = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when product_id = #{item.productId,jdbcType=INTEGER} then #{item.productStatus,jdbcType=CHAR}
+        </foreach>
+      </trim>
+      <trim prefix="product_create = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when product_id = #{item.productId,jdbcType=INTEGER} then #{item.productCreate,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="product_last = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when product_id = #{item.productId,jdbcType=INTEGER} then #{item.productLast,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where product_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.productId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="product_id" keyProperty="productId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product_tb
+    (product_name, product_price, product_image, product_describe, product_status, product_create, 
+      product_last)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.productName,jdbcType=VARCHAR}, #{item.productPrice,jdbcType=DECIMAL}, #{item.productImage,jdbcType=VARCHAR}, 
+        #{item.productDescribe,jdbcType=VARCHAR}, #{item.productStatus,jdbcType=CHAR}, 
+        #{item.productCreate,jdbcType=TIMESTAMP}, #{item.productLast,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+
+  <select id="listProductTb" resultMap="BaseResultMap">
+    select product_id, product_name, product_price, product_image, product_describe, product_status, product_create, product_last from product_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from product_tb
+    where product_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+</mapper>

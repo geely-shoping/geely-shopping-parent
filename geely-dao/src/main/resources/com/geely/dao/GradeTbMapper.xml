@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.GradeTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.GradeTb">
+    <!--@mbg.generated-->
+    <id column="customer_grade_id" jdbcType="INTEGER" property="customerGradeId" />
+    <result column="grade_name" jdbcType="VARCHAR" property="gradeName" />
+    <result column="max_point" jdbcType="INTEGER" property="maxPoint" />
+    <result column="min_point" jdbcType="INTEGER" property="minPoint" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    customer_grade_id, grade_name, max_point, min_point, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from grade_tb
+    where customer_grade_id = #{customerGradeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from grade_tb
+    where customer_grade_id = #{customerGradeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="customer_grade_id" keyProperty="customerGradeId" parameterType="com.geely.entity.GradeTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into grade_tb (grade_name, max_point, min_point, 
+      modified_time)
+    values (#{gradeName,jdbcType=VARCHAR}, #{maxPoint,jdbcType=INTEGER}, #{minPoint,jdbcType=INTEGER}, 
+      #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="customer_grade_id" keyProperty="customerGradeId" parameterType="com.geely.entity.GradeTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into grade_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gradeName != null">
+        grade_name,
+      </if>
+      <if test="maxPoint != null">
+        max_point,
+      </if>
+      <if test="minPoint != null">
+        min_point,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gradeName != null">
+        #{gradeName,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPoint != null">
+        #{maxPoint,jdbcType=INTEGER},
+      </if>
+      <if test="minPoint != null">
+        #{minPoint,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.GradeTb">
+    <!--@mbg.generated-->
+    update grade_tb
+    <set>
+      <if test="gradeName != null">
+        grade_name = #{gradeName,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPoint != null">
+        max_point = #{maxPoint,jdbcType=INTEGER},
+      </if>
+      <if test="minPoint != null">
+        min_point = #{minPoint,jdbcType=INTEGER},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_grade_id = #{customerGradeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.GradeTb">
+    <!--@mbg.generated-->
+    update grade_tb
+    set grade_name = #{gradeName,jdbcType=VARCHAR},
+      max_point = #{maxPoint,jdbcType=INTEGER},
+      min_point = #{minPoint,jdbcType=INTEGER},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where customer_grade_id = #{customerGradeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update grade_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="grade_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_grade_id = #{item.customerGradeId,jdbcType=INTEGER} then #{item.gradeName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="max_point = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_grade_id = #{item.customerGradeId,jdbcType=INTEGER} then #{item.maxPoint,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="min_point = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_grade_id = #{item.customerGradeId,jdbcType=INTEGER} then #{item.minPoint,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="modified_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when customer_grade_id = #{item.customerGradeId,jdbcType=INTEGER} then #{item.modifiedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where customer_grade_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.customerGradeId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="customer_grade_id" keyProperty="customerGradeId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into grade_tb
+    (grade_name, max_point, min_point, modified_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gradeName,jdbcType=VARCHAR}, #{item.maxPoint,jdbcType=INTEGER}, #{item.minPoint,jdbcType=INTEGER}, 
+        #{item.modifiedTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+
+  <select id="listGradeTb" resultMap="BaseResultMap">
+    select customer_grade_id, grade_name, max_point, min_point, modified_time from grade_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from grade_tb
+    where customer_grade_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+</mapper>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geely.dao.CouponTbMapper">
+  <resultMap id="BaseResultMap" type="com.geely.entity.CouponTb">
+    <!--@mbg.generated-->
+    <id column="coupon_id" jdbcType="INTEGER" property="couponId" />
+    <result column="coupon_title" jdbcType="VARCHAR" property="couponTitle" />
+    <result column="coupon_img" jdbcType="VARCHAR" property="couponImg" />
+    <result column="coupon_used" jdbcType="VARCHAR" property="couponUsed" />
+    <result column="coupon_type" jdbcType="VARCHAR" property="couponType" />
+    <result column="coupon_money" jdbcType="DECIMAL" property="couponMoney" />
+    <result column="coupon_validity" jdbcType="VARCHAR" property="couponValidity" />
+    <result column="coupon_state" jdbcType="VARCHAR" property="couponState" />
+    <result column="used_time" jdbcType="TIMESTAMP" property="usedTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    coupon_id, coupon_title, coupon_img, coupon_used, coupon_type, coupon_money, coupon_validity, 
+    coupon_state, used_time, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from coupon_tb
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from coupon_tb
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="coupon_id" keyProperty="couponId" parameterType="com.geely.entity.CouponTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into coupon_tb (coupon_title, coupon_img, coupon_used, 
+      coupon_type, coupon_money, coupon_validity, 
+      coupon_state, used_time, modified_time
+      )
+    values (#{couponTitle,jdbcType=VARCHAR}, #{couponImg,jdbcType=VARCHAR}, #{couponUsed,jdbcType=VARCHAR}, 
+      #{couponType,jdbcType=VARCHAR}, #{couponMoney,jdbcType=DECIMAL}, #{couponValidity,jdbcType=VARCHAR}, 
+      #{couponState,jdbcType=VARCHAR}, #{usedTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="coupon_id" keyProperty="couponId" parameterType="com.geely.entity.CouponTb" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into coupon_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="couponTitle != null">
+        coupon_title,
+      </if>
+      <if test="couponImg != null">
+        coupon_img,
+      </if>
+      <if test="couponUsed != null">
+        coupon_used,
+      </if>
+      <if test="couponType != null">
+        coupon_type,
+      </if>
+      <if test="couponMoney != null">
+        coupon_money,
+      </if>
+      <if test="couponValidity != null">
+        coupon_validity,
+      </if>
+      <if test="couponState != null">
+        coupon_state,
+      </if>
+      <if test="usedTime != null">
+        used_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="couponTitle != null">
+        #{couponTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="couponImg != null">
+        #{couponImg,jdbcType=VARCHAR},
+      </if>
+      <if test="couponUsed != null">
+        #{couponUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null">
+        #{couponType,jdbcType=VARCHAR},
+      </if>
+      <if test="couponMoney != null">
+        #{couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="couponValidity != null">
+        #{couponValidity,jdbcType=VARCHAR},
+      </if>
+      <if test="couponState != null">
+        #{couponState,jdbcType=VARCHAR},
+      </if>
+      <if test="usedTime != null">
+        #{usedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geely.entity.CouponTb">
+    <!--@mbg.generated-->
+    update coupon_tb
+    <set>
+      <if test="couponTitle != null">
+        coupon_title = #{couponTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="couponImg != null">
+        coupon_img = #{couponImg,jdbcType=VARCHAR},
+      </if>
+      <if test="couponUsed != null">
+        coupon_used = #{couponUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="couponType != null">
+        coupon_type = #{couponType,jdbcType=VARCHAR},
+      </if>
+      <if test="couponMoney != null">
+        coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="couponValidity != null">
+        coupon_validity = #{couponValidity,jdbcType=VARCHAR},
+      </if>
+      <if test="couponState != null">
+        coupon_state = #{couponState,jdbcType=VARCHAR},
+      </if>
+      <if test="usedTime != null">
+        used_time = #{usedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geely.entity.CouponTb">
+    <!--@mbg.generated-->
+    update coupon_tb
+    set coupon_title = #{couponTitle,jdbcType=VARCHAR},
+      coupon_img = #{couponImg,jdbcType=VARCHAR},
+      coupon_used = #{couponUsed,jdbcType=VARCHAR},
+      coupon_type = #{couponType,jdbcType=VARCHAR},
+      coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      coupon_validity = #{couponValidity,jdbcType=VARCHAR},
+      coupon_state = #{couponState,jdbcType=VARCHAR},
+      used_time = #{usedTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where coupon_id = #{couponId,jdbcType=INTEGER}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update coupon_tb
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="coupon_title = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.couponTitle,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="coupon_img = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.couponImg,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="coupon_used = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.couponUsed,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="coupon_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.couponType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="coupon_money = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.couponMoney,jdbcType=DECIMAL}
+        </foreach>
+      </trim>
+      <trim prefix="coupon_validity = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.couponValidity,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="coupon_state = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.couponState,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="used_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.usedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="modified_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when coupon_id = #{item.couponId,jdbcType=INTEGER} then #{item.modifiedTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where coupon_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.couponId,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="coupon_id" keyProperty="couponId" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into coupon_tb
+    (coupon_title, coupon_img, coupon_used, coupon_type, coupon_money, coupon_validity, 
+      coupon_state, used_time, modified_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.couponTitle,jdbcType=VARCHAR}, #{item.couponImg,jdbcType=VARCHAR}, #{item.couponUsed,jdbcType=VARCHAR}, 
+        #{item.couponType,jdbcType=VARCHAR}, #{item.couponMoney,jdbcType=DECIMAL}, #{item.couponValidity,jdbcType=VARCHAR}, 
+        #{item.couponState,jdbcType=VARCHAR}, #{item.usedTime,jdbcType=TIMESTAMP}, #{item.modifiedTime,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+
+  <select id="listCouponTb" resultMap="BaseResultMap">
+    select coupon_id, coupon_title, coupon_img, coupon_used, coupon_type, coupon_money, coupon_validity, coupon_state, used_time, modified_time from coupon_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from coupon_tb
+    where coupon_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
+</mapper>
