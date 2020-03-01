@@ -20,4 +20,9 @@ public interface ProductDetailsTbMapper {
     int updateBatch(List<ProductDetailsTb> list);
 
     int batchInsert(@Param("list") List<ProductDetailsTb> list);
+
+    //分页查询
+    List<ProductDetailsTb> listProductDetailsTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
+    //批量删除
+    int batchDelete(List<Integer> list);
 }

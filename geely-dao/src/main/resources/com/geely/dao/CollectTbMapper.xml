@@ -98,4 +98,16 @@
         )
     </foreach>
   </insert>
+
+  <select id="listByCollectTb" resultMap="BaseResultMap">
+    select collect_id, collect_product, modified_time from collect_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from collect_tb
+    where collect_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

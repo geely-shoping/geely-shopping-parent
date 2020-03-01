@@ -185,4 +185,16 @@
         #{item.employeeLast,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listEmployeeTb" resultMap="BaseResultMap">
+    select employee_id, employee_name, employee_sex, employee_phone, employee_card, employee_school, employee_entry, employee_last from employee_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from employee_tb
+    where employee_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

@@ -97,4 +97,6 @@
       (#{item.accountId,jdbcType=INTEGER}, #{item.infoId,jdbcType=INTEGER})
     </foreach>
   </insert>
+
+
 </mapper>

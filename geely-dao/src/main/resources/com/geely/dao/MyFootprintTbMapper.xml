@@ -97,4 +97,16 @@
       (#{item.productId,jdbcType=INTEGER}, #{item.browseTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listMyFootprintTb" resultMap="BaseResultMap">
+    select footprint_id, product_id, browse_time from my_footprint_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from my_footprint_tb
+    where footprint_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

@@ -97,4 +97,16 @@
       (#{item.customerId,jdbcType=INTEGER}, #{item.gradeId,jdbcType=INTEGER})
     </foreach>
   </insert>
+
+  <select id="listCustomerGradeTb" resultMap="BaseResultMap">
+    select customer_grade_id, customer_id, grade_id from customer_grade_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from customer_grade_tb
+    where customer_grade_id  in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

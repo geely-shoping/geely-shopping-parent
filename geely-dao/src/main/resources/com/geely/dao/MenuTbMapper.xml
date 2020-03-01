@@ -132,4 +132,16 @@
         #{item.menuUrl,jdbcType=VARCHAR})
     </foreach>
   </insert>
+
+  <select id="listMenuTb" resultMap="BaseResultMap">
+    select menu_id, menu_name, menu_parent, menu_pid, menu_url from menu_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from menu_tb
+    where menu_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

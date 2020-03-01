@@ -148,4 +148,16 @@
         #{item.imageDescribe,jdbcType=VARCHAR}, #{item.imageLast,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listProductImageTb" resultMap="BaseResultMap">
+    select image_id, image_name, image_master, image_status, image_describe, image_last from product_image_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from product_image_tb
+    where image_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

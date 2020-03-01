@@ -4,6 +4,9 @@ import com.geely.entity.ProductImageTb;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 商品图片
+ */
 public interface ProductImageTbMapper {
     int deleteByPrimaryKey(Integer imageId);
 
@@ -20,4 +23,9 @@ public interface ProductImageTbMapper {
     int updateBatch(List<ProductImageTb> list);
 
     int batchInsert(@Param("list") List<ProductImageTb> list);
+
+    //分页查询
+    List<ProductImageTb> listProductImageTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
+    //批量删除
+    int batchDelete(List<Integer> list);
 }

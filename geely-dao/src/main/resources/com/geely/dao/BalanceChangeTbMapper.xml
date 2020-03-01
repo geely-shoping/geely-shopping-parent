@@ -132,4 +132,16 @@
         #{item.amount,jdbcType=DECIMAL})
     </foreach>
   </insert>
+
+  <select id="listBalanceChangeTb" resultMap="BaseResultMap">
+    select balance_change_id, source, source_detail, create_time, amount from balance_change_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from balance_change_tb
+    where balance_change_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+        #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

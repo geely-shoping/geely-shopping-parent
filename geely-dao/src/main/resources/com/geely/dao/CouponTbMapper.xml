@@ -220,4 +220,16 @@
         )
     </foreach>
   </insert>
+
+  <select id="listCouponTb" resultMap="BaseResultMap">
+    select coupon_id, coupon_title, coupon_img, coupon_used, coupon_type, coupon_money, coupon_validity, coupon_state, used_time, modified_time from coupon_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from coupon_tb
+    where coupon_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

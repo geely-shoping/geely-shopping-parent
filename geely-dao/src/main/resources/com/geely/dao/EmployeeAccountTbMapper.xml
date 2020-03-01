@@ -133,4 +133,16 @@
         )
     </foreach>
   </insert>
+
+  <select id="listEmployeeAccountTb" resultMap="BaseResultMap">
+    select account_id, account_name, account_password, account_create, account_last from employee_account_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from employee_account_tb
+    where account_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

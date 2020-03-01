@@ -236,4 +236,16 @@
         #{item.modifiedTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listCustomerInfoTb" resultMap="BaseResultMap">
+    select customer_info_id, customer_name, customer_gender, identity_card_type, identity_card_no, custoemr_phone, customer_email, balance, nickname, icon, modified_time from customer_info_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from customer_info_tb
+    where customer_info_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

@@ -4,6 +4,9 @@ import com.geely.entity.MenuTb;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 菜单
+ */
 public interface MenuTbMapper {
     int deleteByPrimaryKey(Integer menuId);
 
@@ -20,4 +23,9 @@ public interface MenuTbMapper {
     int updateBatch(List<MenuTb> list);
 
     int batchInsert(@Param("list") List<MenuTb> list);
+
+    //分页查询
+    List<MenuTb> listMenuTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
+    //批量删除
+    int batchDelete(List<Integer> list);
 }

@@ -4,6 +4,9 @@ import com.geely.entity.AccountInfoTb;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 账号信息关联
+ */
 public interface AccountInfoTbMapper {
     int deleteByPrimaryKey(Integer accountInfoId);
 
@@ -20,4 +23,5 @@ public interface AccountInfoTbMapper {
     int updateBatch(List<AccountInfoTb> list);
 
     int batchInsert(@Param("list") List<AccountInfoTb> list);
+
 }

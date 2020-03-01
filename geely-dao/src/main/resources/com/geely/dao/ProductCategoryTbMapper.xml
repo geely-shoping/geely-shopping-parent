@@ -151,4 +151,16 @@
         #{item.categoryLast,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listProductCategoryTb" resultMap="BaseResultMap">
+    select category_id, category_name, category_parent, category_status, category_describe, category_last from product_category_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from product_category_tb
+    where category_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

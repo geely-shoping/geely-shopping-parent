@@ -132,4 +132,16 @@
         #{item.modifiedTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listGradeTb" resultMap="BaseResultMap">
+    select customer_grade_id, grade_name, max_point, min_point, modified_time from grade_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from grade_tb
+    where customer_grade_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

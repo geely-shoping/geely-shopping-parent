@@ -116,4 +116,16 @@
         )
     </foreach>
   </insert>
+
+  <select id="listProductColorTb" resultMap="BaseResultMap">
+    select color_id, color_name, color_image, color_last from product_color_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from product_color_tb
+    where color_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

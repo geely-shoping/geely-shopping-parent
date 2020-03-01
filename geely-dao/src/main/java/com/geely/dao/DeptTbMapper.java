@@ -4,6 +4,9 @@ import com.geely.entity.DeptTb;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 部门表
+ */
 public interface DeptTbMapper {
     int deleteByPrimaryKey(Integer deptId);
 
@@ -20,4 +23,9 @@ public interface DeptTbMapper {
     int updateBatch(List<DeptTb> list);
 
     int batchInsert(@Param("list") List<DeptTb> list);
+
+    //分页查询
+    List<DeptTb> listDeptTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
+    //批量删除
+    int batchDelete(List<Integer> list);
 }

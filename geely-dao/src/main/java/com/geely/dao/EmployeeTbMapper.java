@@ -4,6 +4,9 @@ import com.geely.entity.EmployeeTb;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 员工信息
+ */
 public interface EmployeeTbMapper {
     int deleteByPrimaryKey(Integer employeeId);
 
@@ -20,4 +23,9 @@ public interface EmployeeTbMapper {
     int updateBatch(List<EmployeeTb> list);
 
     int batchInsert(@Param("list") List<EmployeeTb> list);
+
+    //分页查询
+    List<EmployeeTb> listEmployeeTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
+    //批量删除
+    int batchDelete(List<Integer> list);
 }

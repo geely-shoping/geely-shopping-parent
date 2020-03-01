@@ -186,4 +186,16 @@
         #{item.detailsLast,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listProductDetailsTb" resultMap="BaseResultMap">
+    select details_id, details_name, details_image_one, details_image_two, details_image_three, details_image_four, details_image_five, details_last from product_details_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from product_details_tb
+    where details_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

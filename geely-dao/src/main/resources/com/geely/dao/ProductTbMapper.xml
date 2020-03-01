@@ -186,4 +186,16 @@
         )
     </foreach>
   </insert>
+
+  <select id="listProductTb" resultMap="BaseResultMap">
+    select product_id, product_name, product_price, product_image, product_describe, product_status, product_create, product_last from product_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from product_tb
+    where product_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

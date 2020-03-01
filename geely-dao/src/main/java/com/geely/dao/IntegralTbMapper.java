@@ -4,6 +4,9 @@ import com.geely.entity.IntegralTb;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 积分dao
+ */
 public interface IntegralTbMapper {
     int deleteByPrimaryKey(Integer customerIntegralId);
 
@@ -20,4 +23,9 @@ public interface IntegralTbMapper {
     int updateBatch(List<IntegralTb> list);
 
     int batchInsert(@Param("list") List<IntegralTb> list);
+
+    //分页查询
+    List<IntegralTb> listIntegralTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
+    //批量删除
+    int batchDelete(List<Integer> list);
 }

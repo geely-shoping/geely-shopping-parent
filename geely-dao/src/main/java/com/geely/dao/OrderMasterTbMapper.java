@@ -4,6 +4,9 @@ import com.geely.entity.OrderMasterTb;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 订单主表
+ */
 public interface OrderMasterTbMapper {
     int deleteByPrimaryKey(Integer orderId);
 
@@ -20,4 +23,9 @@ public interface OrderMasterTbMapper {
     int updateBatch(List<OrderMasterTb> list);
 
     int batchInsert(@Param("list") List<OrderMasterTb> list);
+
+    //分页查询
+    List<OrderMasterTb> listOrderMasterTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
+    //批量删除
+    int batchDelete(List<Integer> list);
 }

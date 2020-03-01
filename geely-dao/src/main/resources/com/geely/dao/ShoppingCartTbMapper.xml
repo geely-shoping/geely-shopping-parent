@@ -148,4 +148,16 @@
         #{item.addTime,jdbcType=TIMESTAMP}, #{item.modifiedTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listShoppingCartTb" resultMap="BaseResultMap">
+    select shopping_cart_id, product_id, product_amount, product_price, add_time, modified_time from shopping_cart_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from shopping_cart_tb
+    where shopping_cart_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

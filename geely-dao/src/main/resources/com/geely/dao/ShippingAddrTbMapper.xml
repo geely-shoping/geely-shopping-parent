@@ -183,4 +183,16 @@
         #{item.modifiedTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listShippingAddrTb" resultMap="BaseResultMap">
+    select customer_addr_id, zip, province, city, district, address, is_default, modified_time from shipping_addr_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from shipping_addr_tb
+    where customer_addr_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

@@ -132,4 +132,16 @@
         #{item.modelLast,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listProductModelTb" resultMap="BaseResultMap">
+    select model_id, model_name, model_price, model_describe, model_last from product_model_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from product_model_tb
+    where model_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

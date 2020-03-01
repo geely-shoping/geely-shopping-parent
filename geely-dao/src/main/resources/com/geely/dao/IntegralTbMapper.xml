@@ -132,4 +132,16 @@
         #{item.modifiedTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listIntegralTb" resultMap="BaseResultMap">
+    select customer_integral_id, user_point, register_time, birthday, modified_time from integral_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from integral_tb
+    where customer_integral_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

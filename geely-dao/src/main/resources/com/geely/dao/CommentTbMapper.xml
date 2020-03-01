@@ -116,4 +116,16 @@
         #{item.modifiedTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listCommentTb" resultMap="BaseResultMap">
+    select comment_id, comment_content, comment_product, modified_time from comment_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from comment_tb
+    where comment_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

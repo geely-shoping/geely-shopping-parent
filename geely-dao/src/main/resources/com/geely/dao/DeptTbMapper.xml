@@ -132,4 +132,16 @@
         #{item.deptLast,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+
+  <select id="listDeptTb" resultMap="BaseResultMap">
+    select dept_id, dept_name, dept_describe, dept_create, dept_last from dept_tb
+  </select>
+
+  <delete id="batchDelete">
+    delete from dept_tb
+    where dept_id in
+    <foreach collection="list" item="id" separator="," open="(" close=")">
+      #{id,jdbcType=INTEGER}
+    </foreach>
+  </delete>
 </mapper>

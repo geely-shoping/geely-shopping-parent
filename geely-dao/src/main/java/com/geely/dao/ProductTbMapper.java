@@ -4,6 +4,9 @@ import com.geely.entity.ProductTb;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * 商品信息
+ */
 public interface ProductTbMapper {
     int deleteByPrimaryKey(Integer productId);
 
@@ -20,4 +23,9 @@ public interface ProductTbMapper {
     int updateBatch(List<ProductTb> list);
 
     int batchInsert(@Param("list") List<ProductTb> list);
+
+    //分页查询
+    List<ProductTb> listProductTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
+    //批量删除
+    int batchDelete(List<Integer> list);
 }
