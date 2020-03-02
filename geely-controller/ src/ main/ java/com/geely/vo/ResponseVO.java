@@ -1,4 +1,4 @@
-package com.geely.VO;
+package com.geely.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
