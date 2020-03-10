@@ -28,4 +28,6 @@ public interface EmployeeAccountTbMapper {
     List<EmployeeAccountTb> listEmployeeAccountTb(@Param("pageNum")int pageNum,@Param("pageSize")int pageSize);
     //批量删除
     int batchDelete(List<Integer> list);
+    //账号密码查询
+    EmployeeAccountTb selectByUserNameAndPassword(String accountName,String accountPassword);
 }

@@ -26,4 +26,7 @@ public interface EmployeeAccountTbService{
 
     //批量删除
     int batchDelete(List<Integer> accountIds);
+
+    //账号密码查询
+    EmployeeAccountTb selectByUserNameAndPassword(String accountName,String accountPassword);
 }

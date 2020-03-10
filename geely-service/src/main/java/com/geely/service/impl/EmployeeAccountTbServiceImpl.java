@@ -62,4 +62,9 @@ public class EmployeeAccountTbServiceImpl implements EmployeeAccountTbService{
         return employeeAccountTbMapper.batchDelete(accountIds);
     }
 
+    @Override
+    public EmployeeAccountTb selectByUserNameAndPassword(String accountName, String accountPassword) {
+        return employeeAccountTbMapper.selectByUserNameAndPassword(accountName,accountPassword);
+    }
+
 }

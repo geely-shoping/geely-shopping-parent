@@ -145,4 +145,11 @@
       #{id,jdbcType=INTEGER}
     </foreach>
   </delete>
+
+  <select id="selectByUserNameAndPassword" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from employee_account_tb
+    where account_name = #{param1,jdbcType=VARCHAR} and account_password = #{param2,jdbcType=VARCHAR}
+  </select>
 </mapper>
