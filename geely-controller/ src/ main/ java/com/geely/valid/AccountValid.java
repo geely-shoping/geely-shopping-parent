@@ -8,9 +8,9 @@ import javax.validation.constraints.NotEmpty;
  * 校验员工账号密码数据类
  */
 @Data
-public class EmployeeAccountValid {
-    @NotEmpty(message = "账号名不能为空")
-    private String accountName;
+public class AccountValid {
+    @NotEmpty(message = "用户不能为空")
+    private String username;
     @NotEmpty(message = "密码不能为空")
-    private String accountPassword;
+    private String password;
 }
